@@ -1,0 +1,16 @@
+
+  .d-flex > div {
+    flex-grow: 1; 
+  }
+  
+  button {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    border: 1px solid gray;
+    padding: 6px 0.3rem; /* smaller padding */
+  }  
+  span {
+    opacity: 0.5; 
+  }
+  

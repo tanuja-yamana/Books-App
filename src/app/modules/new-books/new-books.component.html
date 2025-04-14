@@ -1,0 +1,16 @@
+<div class="cards-container">
+  <ng-container *ngFor="let book of books">
+    <ng-template [ngTemplateOutlet]="cardTemplate" [ngTemplateOutletContext]="{ $implicit: book }"></ng-template>
+  </ng-container>
+</div>
+
+<!-- Define the book card template here -->
+<ng-template #cardTemplate let-book>
+  <div class="card">
+    <img [src]="book.image" alt="{{ book.title }}" />
+    <h3>{{ book.title }}</h3>
+    <p>{{ book.subtitle }}</p>
+    <p>Price: <strong>{{ book.price }}</strong></p>
+    <a [href]="book.url" target="_blank">More Details</a>
+  </div>
+</ng-template>

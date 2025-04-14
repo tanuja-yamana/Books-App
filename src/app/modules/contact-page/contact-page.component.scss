@@ -1,0 +1,149 @@
+$primary-color: #db34ac;
+$secondary-color: #2ecc71;
+$background-color: gray;
+$header-font-size: 1.5rem;
+$form-padding: 5px;
+$table-padding: 4px;
+
+body {
+  background-color: $background-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  // height: calc(100vh - 5rem);
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: $background-color;
+  padding: 20px; 
+  height: 91vh;
+}
+
+.box {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px; 
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  box-sizing: border-box;
+  max-height: 80vh;
+  overflow: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contactData,
+.submittedData {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-right: 10px;
+}
+
+h1,
+h2 {
+  font-size: $header-font-size;
+  color: $primary-color !important;
+  margin: 0;
+}
+
+form {
+  padding: $form-padding;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+textarea {
+  min-height: 50px;
+}
+
+button {
+  background-color: $primary-color;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+
+  &:hover {
+    background-color: #b51788;
+  }
+}
+
+table {
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: $table-padding;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: $primary-color;
+  color: white;
+}
+
+td {
+  background-color: #f9f9f9;
+}
+
+tr:nth-child(even) {
+  background-color: #f1f1f1;
+}
+
+.gender-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.gender-option {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.gender-option input {
+  margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+  .box {
+    flex-direction: column;
+  }
+
+  .contactData,
+  .submittedData {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .contact-header,
+  .submitted-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

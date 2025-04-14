@@ -1,0 +1,16 @@
+<div class="card">
+    <img class="card-img-top" [src]="book.image" alt="{{ book.title }}" />
+    <h3>{{ book.title }}</h3>
+  
+    <p class="subtitle" (mouseenter)="showPopover()" (mouseleave)="hidePopover()">
+      {{ book.subtitle }}
+    </p>
+  
+    <div class="popover" *ngIf="popoverVisible">
+      {{ book.subtitle }}
+    </div>
+  
+    <p>Price: <strong>{{ book.price }}</strong></p>
+    <a href="{{ book.url }}" target="_blank">More Details</a>
+  </div>
+  

@@ -1,0 +1,28 @@
+/* Ensure this is the height of the page minus the navbar height */
+.landing-page-container {
+    // height: calc(100vh - 5.3rem); /* Full viewport height minus navbar height */
+    height: 91vh;
+}
+
+.landingPageImage {
+    width: 100%;
+    height: 100%;
+}
+
+.landing-page-title {
+    color: darkred;
+    font-size: 2.5rem;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%); /* Center title horizontally */
+    text-align: center;
+    line-height: 2.5rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.landingPageImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

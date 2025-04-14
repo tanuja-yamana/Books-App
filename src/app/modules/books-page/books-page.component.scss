@@ -1,0 +1,91 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    height: 91vh;
+    overflow: hidden;
+}
+
+app-book-page-filters {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #fff;
+    padding: 0px 12px;
+    flex-shrink: 0;
+}
+
+.cards-container-wrapper {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    margin: 10px 0;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.pagination-container {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    background-color: #fff;
+    padding: 5px 0;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.pagination-container .btn {
+    border: 1px solid black;
+    color: black;
+}
+
+.pagination-container .btn.btn-primary {
+    background-color: #4caf50 !important;
+    color: black !important;
+    border-color: black !important;
+}
+
+.pagination-container .btn:hover,
+.pagination-container .btn:focus {
+    background-color: #fff !important;
+    color: #4caf50 !important;
+    border-color: #4caf50 !important;
+}
+
+.pagination-container .arrow-btn-left,
+.pagination-container .arrow-btn-right {
+    border: 1px solid black;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+
+.pagination-container .arrow-btn-left.btn-primary,
+.pagination-container .arrow-btn-right.btn-primary {
+    background-color: #4caf50 !important;
+    color: black !important;
+    border-color: black !important;
+}
+
+.pagination-container .arrow-btn-left:hover,
+.pagination-container .arrow-btn-right:hover,
+.pagination-container .arrow-btn-left:focus,
+.pagination-container .arrow-btn-right:focus {
+    background-color: #fff !important;
+    color: #4caf50 !important;
+    border-color: #4caf50 !important;
+}

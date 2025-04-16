@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutPageComponent implements OnInit {
 
+  bookList: string[] = ['HTML','CSS','JavaScript','NodeJS','Python','MongoDB','Node','Databases','JSON','AWS','Flask','Angular','Express'];
   constructor() { }
 
   ngOnInit(): void {

@@ -5,6 +5,7 @@ import { BooksPageRoutingModule } from './books-page-routing.module';
 import { BookCardComponent } from './components/book-card/book-card.component';
 import { BooksPageComponent } from './books-page.component';
 import { BookPageFiltersComponent } from './components/book-page-filters/book-page-filters.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { BookPageFiltersComponent } from './components/book-page-filters/book-pa
   ],
   imports: [
     CommonModule,
-    BooksPageRoutingModule
+    BooksPageRoutingModule,
+    FormsModule
   ],
   exports: [
     BooksPageComponent,

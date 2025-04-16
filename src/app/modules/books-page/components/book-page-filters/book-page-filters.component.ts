@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-book-page-filters',
@@ -6,41 +7,51 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./book-page-filters.component.scss']
 })
 export class BookPageFiltersComponent {
-  @Input() books: any[] = [];
-  @Input() selectedBook = '';
-  @Input() searchText = '';
-
-  @Output() sortChanged = new EventEmitter<boolean>();
-  @Output() bookSelected = new EventEmitter<string>();
-  @Output() searchChanged = new EventEmitter<string>();
-
   sortAscending = true;
+  searchInput: string = '';
+  selectedBook: string = '';
 
-  // Function to sort books in ascending order
-  sortAscendingOrder() {
-    if (!this.sortAscending) {
-      this.sortAscending = true;
-      this.sortChanged.emit(this.sortAscending);
-    }
-  }
+  @Output() sortByPrice = new EventEmitter<boolean>();
+  @Output() bookSelected = new EventEmitter<string>();
+  @Output() searchKeyword = new EventEmitter<string>();
 
-  // Function to sort books in descending order
-  sortDescendingOrder() {
-    if (this.sortAscending) {
-      this.sortAscending = false;
-      this.sortChanged.emit(this.sortAscending);
-    }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
+
+  toggleSort(): void {
+    this.sortAscending = !this.sortAscending;
+    this.sortByPrice.emit(this.sortAscending);
   }
 
   onBookSelect(event: Event): void {
-    const value = (event.target as HTMLSelectElement).value || '';
-    if (value) this.searchChanged.emit('');
-    this.bookSelected.emit(value);
+    this.selectedBook = (event.target as HTMLSelectElement).value;
+
+    // Clear search input when dropdown is used
+    this.searchInput = '';
+    this.bookSelected.emit(this.selectedBook);
+
+    this.router.navigate([], {
+      relativeTo: this.activatedRoute,
+      queryParams: {
+        book: this.selectedBook || null,
+        search: null,
+      },
+      queryParamsHandling: 'merge',
+    });
   }
 
-  onSearchInput(event: Event): void {
-    const value = (event.target as HTMLInputElement).value.trim();
-    if (value) this.bookSelected.emit('');
-    this.searchChanged.emit(value);
+  onSearchClick(): void {
+    this.searchKeyword.emit(this.searchInput);
+
+    // Clear dropdown when search is used
+    this.selectedBook = '';
+
+    this.router.navigate([], {
+      relativeTo: this.activatedRoute,
+      queryParams: {
+        search: this.searchInput || null,
+        book: null,
+      },
+      queryParamsHandling: 'merge',
+    });
   }
 }

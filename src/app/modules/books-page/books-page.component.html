@@ -1,12 +1,11 @@
-<div class="content-container">
-  <app-book-page-filters
-    [books]="books"
-    [selectedBook]="selectedBook"
-    [searchText]="searchText"
-    (sortChanged)="onSortChanged($event)"
-    (bookSelected)="onBookSelected($event)"
-    (searchChanged)="onSearchChanged($event)">
-  </app-book-page-filters>
+<div class="book-page-wrapper">
+  <div class="book-page-filters">
+    <app-book-page-filters 
+      (sortByPrice)="onSortByPrice($event)" 
+      (bookSelected)="onBookFilterChange($event)"
+      (searchKeyword)="onSearchInput($event)">
+    </app-book-page-filters>
+  </div>
 
   <div class="cards-container-wrapper">
     <div *ngIf="loading" class="text-center my-4">
@@ -18,7 +17,7 @@
 
     <ng-container *ngIf="!loading && !noBooksFound; else noBooks">
       <div class="cards-container">
-        <app-book-card *ngFor="let book of paginatedBooks" [book]="book"></app-book-card>
+        <app-book-card *ngFor="let book of books" [book]="book"></app-book-card>
       </div>
     </ng-container>
 
@@ -29,15 +28,22 @@
     </ng-template>
   </div>
 
-  <div *ngIf="!loading && totalPages > 1" class="pagination-container text-center">
-    <button class="btn arrow-btn-left" (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">&lt;</button>
-    <button
-      *ngFor="let page of getVisiblePages()"
-      class="btn"
-      [ngClass]="{ 'btn-primary': page === currentPage, 'btn-outline-primary': page !== currentPage }"
-      (click)="onPageChange(page)">
+  <div *ngIf="!loading && !noBooksFound" class="pagination-container text-center">
+    <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1" >
+      &lt;
+    </button>
+
+    <button *ngFor="let page of getVisiblePages()" 
+            (click)="onPageChange(page)" 
+            [class.active]="page === currentPage" 
+            >
       {{ page }}
     </button>
-    <button class="btn arrow-btn-right" (click)="onPageChange(currentPage + 1)" [disabled]="currentPage === totalPages">&gt;</button>
+
+    <button (click)="onPageChange(currentPage + 1)" 
+            [disabled]="currentPage === getTotalPages()" 
+            >
+      &gt;
+    </button>
   </div>
 </div>

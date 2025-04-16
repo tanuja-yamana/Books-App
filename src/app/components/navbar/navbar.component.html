@@ -12,7 +12,13 @@
             <ul class="navbar-nav ms-auto d-flex align-items-center gap-3">
                 <li class="nav-item" 
                     *ngFor="let link of navLinks">
-                    <a class="nav-link font-italic fs-5" [routerLink]="link.path" routerLinkActive="active-link" >{{link.label}}</a>
+                    <a 
+                        class="nav-link font-italic fs-5" 
+                        [routerLink]="link.path" 
+                        routerLinkActive="active-link" 
+                    >
+                        {{link.label}}
+                    </a>
                 </li>
             </ul>
             <app-toggle-button></app-toggle-button>

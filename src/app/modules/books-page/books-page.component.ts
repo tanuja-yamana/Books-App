@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookCardService } from './services/book-card.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-books-page',
@@ -8,146 +8,126 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./books-page.component.scss']
 })
 export class BooksPageComponent implements OnInit {
-
   books: any[] = [];
-  paginatedBooks: any[] = [];
-  selectedBook: string = '';
-  searchText: string = '';
-  noBooksFound: boolean = false;
-  loading: boolean = false;
-  sortAscending: boolean = false;
-  currentPage: number = 1;
-  booksPerPage: number = 10;
-  totalPages: number = 0;
-  paginationWindowStart: number = 1;
-  pagesToShow: number = 5;
+  loading = false;
+  currentPage = 1;
+  booksPerPage = 20;
+  totalPages = 0;
+  totalBooks = 0;
+  searchText = 'mongodb';
+  noBooksFound = false;
 
-  constructor(
-    private bookcardService: BookCardService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {}
+  sortAscending = true;
+  sortActive = false;
+  selectedBookFilter: string = '';
+
+  constructor(private bookcardService: BookCardService) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.searchText = params['search'] || '';
-      this.selectedBook = params['book'] || '';
-
-      if (this.searchText) {
-        this.fetchBooks(this.searchText);
-      } else if (this.selectedBook) {
-        this.fetchBooks(this.selectedBook);
-      } else {
-        this.fetchAllBooks();
-      }
-    });
+    this.fetchBooks();
   }
 
-  onBookSelected(bookTitle: string): void {
-    this.resetState();
-    this.selectedBook = bookTitle;
-    const queryParams = bookTitle.trim() ? { book: bookTitle, search: null } : {};
-    this.router.navigate(['/books'], { queryParams });
-    bookTitle.trim() ? this.fetchBooks(bookTitle) : this.fetchAllBooks();
-  }
-
-  onSearchChanged(query: string): void {
-    this.resetState();
-    this.searchText = query.trim();
-    const queryParams = this.searchText ? { search: this.searchText, book: null } : {};
-    this.router.navigate(['/books'], { queryParams });
-    this.searchText ? this.fetchBooks(this.searchText) : this.fetchAllBooks();
-  }
-
-  fetchAllBooks(): void {
+  fetchBooks(): void {
     this.loading = true;
-    this.bookcardService.fetchAllBooks('mongodb').subscribe(
-      (data: any) => {
-        this.books = data;
-        this.finishBookLoading();
-      },
-      () => this.handleError()
-    );
-  }
+    this.books = [];
+    this.noBooksFound = false;
+    this.totalPages = 0;
 
-  fetchBooks(query: string): void {
-    if (!query.trim()) return;
-    this.loading = true;
-    this.bookcardService.getAllBooks(query).subscribe(
-      (data: any) => {
-        const lowerQuery = query.toLowerCase();
-        const filtered = (data || []).filter((b: any) =>
-          b.title.toLowerCase().includes(lowerQuery)
+    this.bookcardService.getBooks(this.searchText, 1).subscribe(
+      firstPage => {
+        const totalBooksFromApi = parseInt(firstPage.total) || 0;
+        const totalApiPages = Math.ceil(totalBooksFromApi / 10);
+        const requests = [];
+        for (let i = 1; i <= totalApiPages; i++) {
+          requests.push(this.bookcardService.getBooks(this.searchText, i));
+        }
+        forkJoin(requests).subscribe(
+          (responses: any[]) => {
+            let combinedBooks: any[] = responses
+              .map((resp: any) => resp.books || [])
+              .reduce((acc: any[], curr: any[]) => acc.concat(curr), []);
+
+            if (this.selectedBookFilter) {
+              const keyword = this.selectedBookFilter.toLowerCase();
+              combinedBooks = combinedBooks.filter((book: any) =>
+                (book.title && book.title.toLowerCase().includes(keyword)) ||
+                (book.subtitle && book.subtitle.toLowerCase().includes(keyword))
+              );
+            }
+
+            if (combinedBooks.length) {
+              this.totalBooks = combinedBooks.length;
+              this.totalPages = Math.ceil(this.totalBooks / this.booksPerPage);
+              const start = (this.currentPage - 1) * this.booksPerPage;
+              const end = start + this.booksPerPage;
+              this.books = combinedBooks.slice(start, end);
+
+              if (this.sortActive) {
+                this.sortBooks();
+              }
+            } else {
+              this.noBooksFound = true;
+            }
+
+            this.loading = false;
+          },
+          error => {
+            console.error('Failed to fetch all books:', error);
+            this.loading = false;
+            this.noBooksFound = true;
+          }
         );
-        const seen = new Set();
-        this.books = filtered.filter((b: any) => {
-          const title = b.title.toLowerCase();
-          if (seen.has(title)) return false;
-          seen.add(title);
-          return true;
-        });
-        this.finishBookLoading();
       },
-      () => this.handleError()
+      error => {
+        console.error('Failed to fetch first page:', error);
+        this.loading = false;
+        this.noBooksFound = true;
+      }
     );
-  }
-
-  finishBookLoading(): void {
-    this.totalPages = Math.ceil(this.books.length / this.booksPerPage);
-    this.currentPage = 1;
-    this.paginationWindowStart = 1;
-    this.updatePaginatedBooks();
-    this.noBooksFound = this.books.length === 0;
-    this.loading = false;
-  }
-
-  updatePaginatedBooks(): void {
-    const start = (this.currentPage - 1) * this.booksPerPage;
-    this.paginatedBooks = this.books.slice(start, start + this.booksPerPage);
   }
 
   onPageChange(page: number): void {
     if (page < 1 || page > this.totalPages) return;
     this.currentPage = page;
-    this.updatePaginatedBooks();
-    this.updatePaginationWindow();
-  }
-
-  updatePaginationWindow(): void {
-    this.paginationWindowStart = Math.floor((this.currentPage - 1) / this.pagesToShow) * this.pagesToShow + 1;
+    this.fetchBooks();
   }
 
   getVisiblePages(): number[] {
-    const end = Math.min(this.paginationWindowStart + this.pagesToShow - 1, this.totalPages);
-    let visiblePages = [];
-    for (let i = this.paginationWindowStart; i <= end; i++) {
-      visiblePages.push(i);
+    const pages: number[] = [];
+    for (let i = 1; i <= this.totalPages; i++) {
+      pages.push(i);
     }
-    return visiblePages;
+    return pages;
   }
 
-  onSortChanged(ascending: boolean): void {
+  getTotalPages(): number {
+    return this.totalPages;
+  }
+
+  onSortByPrice(ascending: boolean): void {
     this.sortAscending = ascending;
-    this.books.sort((a, b) => {
-      const priceA = parseFloat(a.price.replace('$', ''));
-      const priceB = parseFloat(b.price.replace('$', ''));
-      return ascending ? priceA - priceB : priceB - priceA;
+    this.sortActive = true;
+    this.sortBooks();
+  }
+
+  sortBooks(): void {
+    this.books.sort((a: any, b: any) => {
+      const priceA = parseFloat(a.price.replace('$', '')) || 0;
+      const priceB = parseFloat(b.price.replace('$', '')) || 0;
+      return this.sortAscending ? priceA - priceB : priceB - priceA;
     });
-    this.updatePaginatedBooks();
   }
 
-  private resetState(): void {
-    this.books = [];
-    this.paginatedBooks = [];
+  onBookFilterChange(selectedBook: string): void {
+    this.selectedBookFilter = selectedBook.toLowerCase();
     this.currentPage = 1;
-    this.totalPages = 0;
-    this.noBooksFound = false;
-    this.loading = true;
+    this.fetchBooks();
   }
 
-  private handleError(): void {
-    this.books = [];
-    this.noBooksFound = true;
-    this.loading = false;
+  onSearchInput(inputText: string): void {
+    this.selectedBookFilter = inputText.toLowerCase();
+    this.currentPage = 1;
+    this.fetchBooks();
   }
+
 }

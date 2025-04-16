@@ -4,9 +4,10 @@
   </ng-container>
 </div>
 
-<!-- Define the book card template here -->
 <ng-template #cardTemplate let-book>
   <div class="card">
+    <div class="ribbon">New</div>
+
     <img [src]="book.image" alt="{{ book.title }}" />
     <h3>{{ book.title }}</h3>
     <p>{{ book.subtitle }}</p>
@@ -14,3 +15,6 @@
     <a [href]="book.url" target="_blank">More Details</a>
   </div>
 </ng-template>
+
+
+

@@ -18,7 +18,7 @@
     flex-direction: column; 
     justify-content: space-between; 
     align-items: center; 
-    height: 320px; 
+    height: 300px; 
     overflow: hidden; 
     transition: transform 0.3s ease, background-color 0.3s ease;
   
@@ -42,4 +42,24 @@
       background-color: rgb(153, 128, 174);
     }
   }
-  
+  .ribbon {
+    width: 150px;
+    background: crimson;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    // top: 5px;
+    left: -55px;
+    transform: rotate(-45deg);
+    z-index: 10;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    font-size: 0.75rem;
+    padding: 5px 0;
+  }
+  .carousel-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 350px; /* Set height for carousel items */
+}

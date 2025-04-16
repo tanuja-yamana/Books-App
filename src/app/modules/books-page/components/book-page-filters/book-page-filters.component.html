@@ -1,12 +1,6 @@
-<div class="d-flex" style="justify-content: space-between;">
-  <div style="margin-left: 2.5rem;">
-    <select
-      id="selectBook"
-      class="form-control"
-      [value]="selectedBook"
-      (change)="onBookSelect($event)"
-      style="padding: 0.25rem 0.25rem; width: 200px;"
-    >
+<div class="filters-page" >
+  <div class="left-side-options">
+    <select (change)="onBookSelect($event)" [value]="selectedBook">
       <option value="">Select a Book</option>
       <option value="HTML">HTML</option>
       <option value="CSS">CSS</option>
@@ -23,22 +17,20 @@
       <option value="Express">Express</option>
     </select>
   </div>
-  <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+  <div class="right-side-options">
     <div>
-      <button class="btn">
-        sort by price
-        <span (click)="sortAscendingOrder()">↑</span>
-        <span (click)="sortDescendingOrder()">↓</span>
+      <button class="btn" (click)="toggleSort()">
+        Sort by Price
+        <span *ngIf="!sortAscending">↑</span>
+        <span *ngIf="sortAscending">↓</span>
       </button>
     </div>
-    
-    <div style="margin-right: 2.5rem;">
-      <input
-        class="form-control"
-        [value]="searchText"
-        placeholder="Search by title or subtitle"
-        (input)="onSearchInput($event)"
-      />
+
+    <div class="searchButton">
+      <input class="form-control" placeholder="Search by title or subtitle" [(ngModel)]="searchInput" />
+      <button (click)="onSearchClick()">
+        🔍
+      </button>
     </div>
   </div>
 </div>

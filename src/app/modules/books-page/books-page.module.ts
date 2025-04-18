@@ -7,6 +7,7 @@ import { BooksPageComponent } from './books-page.component';
 import { BookPageFiltersComponent } from './components/book-page-filters/book-page-filters.component';
 import { FormsModule } from '@angular/forms';
 import { AboutPageModule } from '../about-page/about-page.module';
+import { AboutPageComponent } from '../about-page/about-page.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { AboutPageModule } from '../about-page/about-page.module';
   ],
   exports: [
     BooksPageComponent,
-    BookPageFiltersComponent
+    BookPageFiltersComponent,
+    AboutPageComponent
   ]
 })
 export class BooksPageModule { }

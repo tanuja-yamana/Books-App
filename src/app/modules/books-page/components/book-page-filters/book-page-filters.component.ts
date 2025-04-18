@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { BookListService } from 'src/app/book-list.service';
 
 @Component({
   selector: 'app-book-page-filters',
@@ -15,14 +16,13 @@ export class BookPageFiltersComponent {
   sortAscending = false;
   searchInput: string = '';
 
-  bookOptions: string[] = [
-    'HTML', 'CSS', 'JavaScript', 'NodeJS', 'Python',
-    'MongoDB', 'Node', 'DataBases', 'JSON', 'AWS',
-    'Flask', 'Angular', 'Express'
+  bookList: string[] = [
   ];
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
-
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private bookListService: BookListService) {}
+ngOnInit(): void{
+  this.bookList = this.bookListService.getBooks();
+}
   toggleSort(): void {
     this.sortAscending = !this.sortAscending;
     this.sortByPrice.emit(this.sortAscending);

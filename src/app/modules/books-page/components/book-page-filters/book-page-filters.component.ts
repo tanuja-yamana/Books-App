@@ -7,13 +7,19 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./book-page-filters.component.scss']
 })
 export class BookPageFiltersComponent {
-  sortAscending = true;
-  searchInput: string = '';
-  selectedBook: string = '';
-
   @Output() sortByPrice = new EventEmitter<boolean>();
   @Output() bookSelected = new EventEmitter<string>();
   @Output() searchKeyword = new EventEmitter<string>();
+
+  selectedBook: string = '';
+  sortAscending = false;
+  searchInput: string = '';
+
+  bookOptions: string[] = [
+    'HTML', 'CSS', 'JavaScript', 'NodeJS', 'Python',
+    'MongoDB', 'Node', 'DataBases', 'JSON', 'AWS',
+    'Flask', 'Angular', 'Express'
+  ];
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
@@ -24,8 +30,6 @@ export class BookPageFiltersComponent {
 
   onBookSelect(event: Event): void {
     this.selectedBook = (event.target as HTMLSelectElement).value;
-
-    // Clear search input when dropdown is used
     this.searchInput = '';
     this.bookSelected.emit(this.selectedBook);
 
@@ -41,8 +45,6 @@ export class BookPageFiltersComponent {
 
   onSearchClick(): void {
     this.searchKeyword.emit(this.searchInput);
-
-    // Clear dropdown when search is used
     this.selectedBook = '';
 
     this.router.navigate([], {

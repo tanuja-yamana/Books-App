@@ -12,6 +12,9 @@ import { AboutPageComponent } from './about-page.component';
   imports: [
     CommonModule,
     AboutPageRoutingModule
+  ],
+  exports: [
+    AboutPageComponent
   ]
 })
 export class AboutPageModule { }

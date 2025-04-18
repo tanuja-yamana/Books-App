@@ -1,57 +1,96 @@
-.filters-page {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+:host {
+  .filters-page {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-button {
-  display: flex;
-  align-items: center;
-  // gap: 0.2rem;
-  border: 1px solid gray;
-  padding: 6px 0.3rem;
-  background-color: #fff;
-  cursor: pointer;
-  font-size: 0.95rem;
+    .select-dropdown {
+      position: relative;
+      border: 1px solid gray;
+      border-radius: 6px;
+      margin-left: 1.8rem;
+      width: 140px;
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      // padding-right: 10px;
 
-  &:hover {
-    background-color: #f1f1f1;
+      select {
+        padding: 6px 0rem;
+        border: none;
+        width: 100%;
+        appearance: none;
+        background: none;
+        outline: none;
+        font-size: 0.95rem;
+        padding-left: 10px;
+      }
+
+      i {
+        position: absolute;
+        right: 10px;
+        pointer-events: none;
+      }
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      border: 1px solid gray;
+      padding: 6px 0.3rem;
+      background-color: #fff;
+      cursor: pointer;
+      font-size: 0.95rem;
+
+      &:hover {
+        background-color: #f1f1f1;
+      }
+    }
+
+    .right-side-options {
+      display: flex;
+      gap: 1rem;
+      margin-right: 1.8rem;
+
+      .form-control {
+        padding: 5px;
+        border: none;
+        box-shadow: none;
+        outline: none;
+        font-size: 0.95rem;
+        padding-right: 0;
+      }
+
+      .searchButton {
+        display: flex;
+        border: 1px solid gray;
+        border-radius: 6px;
+        align-items: center;
+        overflow: hidden;
+
+        input {
+          border: none;
+          outline: none;
+        }
+
+        button {
+          border: none;
+          background-color: #fff;
+          cursor: pointer;
+          padding: 6px;
+          border-radius: 0;
+          
+        }
+        
+
+        i {
+          font-size: 1rem;
+        }
+      }
+
+      span {
+        padding-left: 5px;
+      }
+    }
   }
-}
-
-.searchButton {
-  // margin-right: 2.5rem; 
-  display: flex;
-  border: 1px solid gray;
-  border-radius: 6px;
-
-  button {
-    border: none;
-    padding: 0;
-  }
-}
-
-.right-side-options {
-  display: flex; 
-  // justify-content: stretch; 
-  gap: 1rem;
-  margin-right: 4rem;
-
-  // .btn {
-  //   margin-right: 1rem;
-  // }
-
-  .form-control {
-    padding: 0;
-    border: none;
-    box-shadow: none;
-  }
-}
-
-select {
-  border: none;
-  padding: 6px 0.3rem;
-  border: 1px solid gray;
-  border-radius: 6px;
-  margin-left: 3rem;
-}
+} 

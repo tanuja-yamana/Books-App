@@ -1,3 +1,4 @@
+
 <div class="book-page-wrapper">
   <div class="book-page-filters">
     <app-book-page-filters 
@@ -22,10 +23,11 @@
     </ng-container>
 
     <ng-template #noBooks>
-      <div class="text-center mt-4 text-muted">
+      <div *ngIf="!loading && noBooksFound" class="text-center mt-4 text-muted">
         No books found.
       </div>
     </ng-template>
+    
   </div>
 
   <div *ngIf="!loading && !noBooksFound" class="pagination-container text-center">

@@ -6,9 +6,7 @@
   </p>
   <p>Price: <strong>{{ book.price }}</strong></p>
   <a [href]="book.url" target="_blank">More Details</a>
-
-  <!-- Popover Content -->
   <div *ngIf="popoverVisible" class="popover">
-    {{ book.subtitle }} <!-- You can modify the content here -->
+    {{ book.subtitle }} 
   </div>
 </div>  

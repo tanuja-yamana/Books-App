@@ -1,20 +1,43 @@
-<div class="cards-container">
-  <ng-container *ngFor="let book of books">
-    <ng-template [ngTemplateOutlet]="cardTemplate" [ngTemplateOutletContext]="{ $implicit: book }"></ng-template>
-  </ng-container>
-</div>
+<div class="scroll-container" (scroll)="onContainerScroll($event)">
+  <div class="d-flex justify-content-center align-items-center mt-4">
+    <button class="btn btn-outline-secondary me-2" (click)="prev()" [disabled]="currentIndex === 0">&#8592;</button>
 
-<ng-template #cardTemplate let-book>
-  <div class="card">
-    <div class="ribbon">New</div>
-
-    <img [src]="book.image" alt="{{ book.title }}" />
-    <h3>{{ book.title }}</h3>
-    <p>{{ book.subtitle }}</p>
-    <p>Price: <strong>{{ book.price }}</strong></p>
+    <div class="carousel-viewport overflow-hidden">
+      <div class="carousel-track" [style.transform]="getTransform()" [class.animate]="isAnimating">
+        <div class="carousel-card" *ngFor="let book of carouselBooks; let i = index"
+     [ngClass]="getCardClass(i)">
+  <div class="card text-center">
+    <p class="ribbon">New</p>
+    <img [src]="book.image" class="card-img-top" [alt]="book.title" />
+    <h5 class="card-title">{{ book.title }}</h5>
+    <p class="card-text">{{ book.subtitle }}</p>
+    <p class="card-text"><strong>{{ book.price }}</strong></p>
     <a [href]="book.url" target="_blank">More Details</a>
   </div>
-</ng-template>
+</div>
 
+      </div>
+    </div>
 
+    <button class="btn btn-outline-secondary ms-2" (click)="next()" 
+    
+    [disabled]="currentIndex + visibleCount >= 16">&#8594;</button>
+  </div>
+  <!-- [disabled]="currentIndex + visibleCount >= carouselBooks.length">&#8594;</button> -->
+  <div class="cards-container mt-5">
+    <ng-container *ngFor="let book of randomBooks">
+      <div class="card">
+        <p class="ribbon">New</p>
+        <img [src]="book.image" [alt]="book.title" />
+        <h3>{{ book.title }}</h3>
+        <p>{{ book.subtitle }}</p>
+        <p><strong>{{ book.price }}</strong></p>
+        <a [href]="book.url" target="_blank">More Details</a>
+      </div>
+    </ng-container>
+  </div>
 
+  <div class="loading-spinner" *ngIf="isLoading">
+    <p>Loading more books...</p>
+  </div>
+</div>

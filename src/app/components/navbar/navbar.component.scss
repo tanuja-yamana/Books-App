@@ -6,45 +6,39 @@
         right: 0;
         height: 3rem; /* Define height of navbar */
         background-color: rgb(163, 155, 201);
-        padding: 0 30px;
+        // padding: 0 1.8rem;
+        padding: 0 1.8rem;
         z-index: 1000;
         display: flex;
         align-items: center;
         margin-bottom: 0;
     }
-
     nav .navbar-brand {
         display: flex;
         align-items: center;
     }
-
     nav .navbar-brand img {
         height: 40px;
         border-radius: 50%;
         margin-right: 10px;
     }
-
     nav .navbar-nav {
         list-style-type: none;
         display: flex;
         align-items: center;
         gap: 15px;
     }
-
     .collapse {
         gap: 15px;
     }
-
     nav .navbar-nav li a {
         text-decoration: none;
         color: #333;
         font-size: 1.3rem;
     }
-
     nav .navbar-nav li a.active-link {
         color: rgb(49, 133, 105);
     }
-
     .app-toggle-button {
         display: flex;
         align-items: center;

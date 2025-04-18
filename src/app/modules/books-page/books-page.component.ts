@@ -16,7 +16,6 @@ export class BooksPageComponent implements OnInit {
   totalBooks = 0;
   searchText = 'mongodb';
   noBooksFound = false;
-
   sortAscending = true;
   sortActive = false;
   selectedBookFilter: string = '';
@@ -26,6 +25,7 @@ export class BooksPageComponent implements OnInit {
   ngOnInit(): void {
     this.fetchBooks();
   }
+
 
   fetchBooks(): void {
     this.loading = true;

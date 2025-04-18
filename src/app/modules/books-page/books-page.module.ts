@@ -6,6 +6,7 @@ import { BookCardComponent } from './components/book-card/book-card.component';
 import { BooksPageComponent } from './books-page.component';
 import { BookPageFiltersComponent } from './components/book-page-filters/book-page-filters.component';
 import { FormsModule } from '@angular/forms';
+import { AboutPageModule } from '../about-page/about-page.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     BooksPageRoutingModule,
-    FormsModule
+    FormsModule,
+    AboutPageModule
   ],
   exports: [
     BooksPageComponent,

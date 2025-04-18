@@ -1,22 +1,14 @@
-<div class="filters-page" >
+<div class="filters-page">
   <div class="left-side-options">
-    <select (change)="onBookSelect($event)" [value]="selectedBook">
-      <option value="">Select a Book</option>
-      <option value="HTML">HTML</option>
-      <option value="CSS">CSS</option>
-      <option value="JavaScript">JavaScript</option>
-      <option value="NodeJS">NodeJS</option>
-      <option value="Python">Python</option>
-      <option value="MongoDB">MongoDB</option>
-      <option value="Node">Node</option>
-      <option value="DataBases">DataBases</option>
-      <option value="JSON">JSON</option>
-      <option value="AWS">AWS</option>
-      <option value="Flask">Flask</option>
-      <option value="Angular">Angular</option>
-      <option value="Express">Express</option>
-    </select>
+    <div class="select-dropdown">
+      <select (change)="onBookSelect($event)" [value]="selectedBook">
+        <option value="">Select a Book</option>
+        <option *ngFor="let book of bookOptions" [value]="book">{{ book }}</option>
+      </select>
+      <i class="bi bi-chevron-down"></i>
+    </div>
   </div>
+
   <div class="right-side-options">
     <div>
       <button class="btn" (click)="toggleSort()">
@@ -29,7 +21,7 @@
     <div class="searchButton">
       <input class="form-control" placeholder="Search by title or subtitle" [(ngModel)]="searchInput" />
       <button (click)="onSearchClick()">
-        🔍
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </div>

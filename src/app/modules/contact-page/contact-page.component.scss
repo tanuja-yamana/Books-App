@@ -4,6 +4,8 @@ $background-color: gray;
 $header-font-size: 1.5rem;
 $form-padding: 5px;
 $table-padding: 4px;
+$box-padding: 15px; // Adjust the padding for smaller box size
+$box-margin: 10px; // Adjust the margin for consistent spacing
 
 body {
   background-color: $background-color;
@@ -11,7 +13,6 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  // height: calc(100vh - 5rem);
 }
 
 .content {
@@ -20,15 +21,15 @@ body {
   align-items: center;
   width: 100%;
   background-color: $background-color;
-  padding: 20px; 
+  padding: 20px;
   height: 91vh;
 }
 
 .box {
   background-color: white;
   border-radius: 8px;
-  padding: 20px;
-  margin: 20px; 
+  padding: 15px; // Same padding for all sides
+  margin: 15px;   // Same margin for all sides
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -92,6 +93,7 @@ button {
 table {
   border-collapse: collapse;
   margin-top: 20px;
+  width: 100%;
 }
 
 th,
@@ -130,20 +132,3 @@ tr:nth-child(even) {
   margin-right: 5px;
 }
 
-@media (max-width: 768px) {
-  .box {
-    flex-direction: column;
-  }
-
-  .contactData,
-  .submittedData {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .contact-header,
-  .submitted-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}

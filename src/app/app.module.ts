@@ -18,6 +18,8 @@ import { NewBooksComponent } from './modules/new-books/new-books.component';
 import { NewBooksModule } from './modules/new-books/new-books.module';
 import { FormsModule } from '@angular/forms';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { MoreDetailsComponent } from './components/more-details/more-details.component';
+// import { MoreDetailsComponent } from './components/more-details/more-details.component';
 
 
 @NgModule({
@@ -27,6 +29,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     ToggleButtonComponent,
     ContactPageComponent,
     NewBooksComponent,
+    // MoreDetailsComponent,
     // BooksPageComponent,
     // BookCardComponent
   ],

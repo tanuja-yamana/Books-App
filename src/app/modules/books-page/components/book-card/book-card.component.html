@@ -5,8 +5,20 @@
     {{ book.subtitle }}
   </p>
   <p>Price: <strong>{{ book.price }}</strong></p>
-  <a [href]="book.url" target="_blank">More Details</a>
-  <div *ngIf="popoverVisible" class="popover">
-    {{ book.subtitle }} 
+  <a  (click)="openModal()">More Details</a>
+
+  <div *ngIf="modalVisible" class="modal-overlay" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <app-more-details
+        *ngIf="selectedBook"
+        [book]="selectedBook"
+        (close)="closeModal()"
+      ></app-more-details>
+      <button (click)="closeModal()">Close</button>
+    </div>
   </div>
-</div>  
+
+  <div *ngIf="popoverVisible" class="popover">
+    {{ book.subtitle }}
+  </div>
+</div>

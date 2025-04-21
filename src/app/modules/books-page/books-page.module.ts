@@ -8,13 +8,15 @@ import { BookPageFiltersComponent } from './components/book-page-filters/book-pa
 import { FormsModule } from '@angular/forms';
 import { AboutPageModule } from '../about-page/about-page.module';
 import { AboutPageComponent } from '../about-page/about-page.component';
+import { MoreDetailsComponent } from 'src/app/components/more-details/more-details.component';
 
 
 @NgModule({
   declarations: [
     BooksPageComponent,
     BookCardComponent,
-    BookPageFiltersComponent
+    BookPageFiltersComponent,
+    MoreDetailsComponent
   ],
   imports: [
     CommonModule,

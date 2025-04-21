@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { BookListService } from 'src/app/book-list.service';
+import { BookListService } from 'src/app/services/book-list.service';
 
 @Component({
   selector: 'app-book-page-filters',

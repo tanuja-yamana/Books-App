@@ -11,6 +11,7 @@
     position: sticky;
     top: 0;
     background-color: white;
+    padding: 0 0.3rem;
     padding-top: 0.6rem;
     padding-bottom: 0.3rem;
     border-bottom: 1px solid #e0e0e0;
@@ -20,13 +21,17 @@
     overflow-y: scroll;
     padding: 0;
     padding-bottom: 45px;
-    scrollbar-width: none; 
+    scrollbar-width: none;
   }
-  
+
   .cards-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
+    // padding: 1.09rem;
+    box-sizing: border-box;
+    gap: 1.2rem;
+    padding-top: 0;
   }
 
   .pagination-container {
@@ -35,7 +40,7 @@
     left: 0;
     width: 100%;
     background-color: #fff;
-    padding: 4px 0;
+    padding: 6px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,15 +51,22 @@
     .btn,
     .arrow-btn-left,
     .arrow-btn-right {
+      width: 30px;
+      height: 30px;
+      font-size: 15px;
+      line-height: 1;
+      margin: 0 3px;
+      padding: 0;
       border: 1px solid #4caf50;
-      color: black;
-      background-color: white;
-      padding: 4px 10px;
-      margin: 0 2px;
-      font-size: 16px;
       border-radius: 50%;
+      background-color: white;
+      color: black;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: all 0.2s ease-in-out;
+      text-align: center;
 
       &:hover,
       &:focus {
@@ -80,6 +92,58 @@
           color: #999 !important;
         }
       }
+    }
+  }
+
+  // Responsive styles for larger screens
+  @media screen and (min-width: 1440px) {
+    .book-page-filters {
+      padding: 0 1rem;
+      padding-top: 1rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .cards-container {
+      // padding: 2rem;
+      // gap: 2rem;
+      padding: 0;
+      justify-content: center;
+    }
+
+    .pagination-container button,
+    .pagination-container .btn,
+    .pagination-container .arrow-btn-left,
+    .pagination-container .arrow-btn-right {
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+    }
+  }
+
+  @media screen and (min-width: 2560px) {
+    .book-page-filters {
+      padding: 0 2rem;
+      padding-top: 1.5rem;
+      padding-bottom: 1rem;
+    }
+
+    .cards-container {
+      padding: 3rem;
+      gap: 3rem;
+      padding-top: 0;
+    }
+
+.pagination-container {
+  padding: 20px 0;
+}
+
+    .pagination-container button,
+    .pagination-container .btn,
+    .pagination-container .arrow-btn-left,
+    .pagination-container .arrow-btn-right {
+      width: 50px;
+      height: 50px;
+      font-size: 22px;
     }
   }
 }

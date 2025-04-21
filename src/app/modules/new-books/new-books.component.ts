@@ -1,3 +1,4 @@
+
 import { Component, OnInit, HostListener } from '@angular/core';
 import { NewBookCardService } from './services/new-book-card.service';
 
@@ -12,8 +13,8 @@ export class NewBooksComponent implements OnInit {
   randomBooks: any[] = [];
   isLoading: boolean = false;
   currentIndex: number = 0;
-  visibleCount: number = 5;  // Set visible count to 5
-  cardWidth: number = 180;  // Adjust card width as needed
+  visibleCount: number = 5;  
+  cardWidth: number = 180;  
   isAnimating: boolean = false;
 
   constructor(private newBookCardService: NewBookCardService) {}
@@ -29,7 +30,6 @@ export class NewBooksComponent implements OnInit {
     });
   }
 
-  @HostListener('scroll', ['$event'])
   onContainerScroll(event: any): void {
     const scrollContainer = event.target;
     if (scrollContainer.scrollTop + scrollContainer.offsetHeight >= scrollContainer.scrollHeight - 50 && !this.isLoading) {
@@ -62,12 +62,12 @@ export class NewBooksComponent implements OnInit {
     switch (relativeIndex) {
       case 0:
       case 4:
-        return 'edge-card'; // Scale 0.8
+        return 'edge-card'; 
       case 1:
       case 3:
-        return 'near-middle'; // Scale 0.9
+        return 'near-middle'; 
       case 2:
-        return 'middle-card'; // Scale 1.2
+        return 'middle-card'; 
       default:
         return '';
     }
@@ -92,4 +92,9 @@ export class NewBooksComponent implements OnInit {
       this.randomBooks.push(sourceBooks[randomIndex]);
     }
   }
+
+  storeBook(book: any) {
+    localStorage.setItem('selectedBook', JSON.stringify(book));
+  }
+  
 }

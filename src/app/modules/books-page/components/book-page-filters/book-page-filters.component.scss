@@ -13,7 +13,6 @@
       display: flex;
       align-items: center;
       background-color: #fff;
-      // padding-right: 10px;
 
       select {
         padding: 6px 0rem;
@@ -79,9 +78,7 @@
           cursor: pointer;
           padding: 6px;
           border-radius: 0;
-          
         }
-        
 
         i {
           font-size: 1rem;
@@ -93,4 +90,75 @@
       }
     }
   }
-} 
+
+  @media screen and (min-width: 1024px) {
+    .filters-page {
+      // margin-top: 0.6rem;
+      padding: 0.3rem 0;
+    }
+  }
+
+  @media screen and (min-width: 2560px) {
+    .filters-page {
+      font-size: 1.5rem;
+      padding: 0.3rem 1rem;
+      margin-top: 2.3rem;
+  
+      .select-dropdown {
+        width: 330px;
+        height: 80px;
+  
+        select {
+          font-size: 2.2rem;
+          padding: 14px 14px 14px 20px;
+        }
+  
+        i {
+          font-size: 2.2rem;
+          right: 16px;
+        }
+      }
+  
+      button {
+        font-size: 2.2rem;
+        height: 80px;
+        padding: 12px 18px; 
+
+        
+      }
+  
+      .right-side-options {
+        gap: 2rem;
+        button .btn {
+          font-size: 2.2rem;
+          padding: 0.5rem;
+        }
+        .form-control {
+          font-size: 2.2rem;
+          padding: 12px 16px;
+        }
+  
+        .searchButton {
+          height: 80px;
+  
+          input {
+            font-size: 2.2rem;
+            padding: 12px;
+          }
+  
+          button {
+            padding: 12px 14px;
+          }
+  
+          i {
+            font-size: 1.5rem;
+          }
+        }
+  
+        span {
+          font-size: 2.2rem;
+        }
+      }
+    }
+  }
+}  

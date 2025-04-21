@@ -1,0 +1,46 @@
+<strong>{{ book.title }}</strong>
+
+<div *ngIf="book; else notFound" class="card">
+  <div class="card-image">
+    <div class="image-container">
+      <img [src]="book.image" class="card-img-top" [alt]="book.title" />
+    </div>
+    <div class="button-container">
+      <button class="btn-buy">BUY</button>
+      <br>
+      <button class="btn-preview">PREVIEW</button>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <table class="table table-striped">
+      <tr>
+        <td><strong>Title:</strong></td>
+        <td>{{ book.title }}</td>
+      </tr>
+      <tr>
+        <td><strong>Subtitle:</strong></td>
+        <td>{{ book.subtitle }}</td>
+      </tr>
+      <tr>
+        <td><strong>ISBN13:</strong></td>
+        <td>{{ book.isbn13 }}</td>
+      </tr>
+      <tr>
+        <td><strong>Price:</strong></td>
+        <td>{{ book.price }}</td>
+      </tr>
+      <tr>
+        <td><strong>URL:</strong></td>
+        <td><a [href]="book.url" target="_blank">{{ book.url }}</a></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+
+
+<ng-template #notFound>
+  <p class="text-center">Book not found!</p>
+</ng-template>

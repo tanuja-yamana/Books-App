@@ -1,5 +1,4 @@
 :host {
-  
   .content-container {
     display: flex;
     flex-wrap: wrap;
@@ -14,32 +13,18 @@
     position: relative;
     width: 200px;
     height: 15rem;
+    margin: 1rem;
+    padding: 1rem;
     background-color: rgb(183, 164, 201);
     color: rgb(37, 34, 34);
     border: 1px solid #ccc;
     border-radius: 8px;
-    padding: 1rem;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin: 1rem;
-    transition: transform 0.3s ease, background-color 0.3s ease;
     overflow: hidden;
-
-    &:hover {
-      transform: scale(1.05);
-      background-color: rgb(153, 128, 174);
-
-      .popover {
-        display: flex;
-      }
-
-      a {
-        text-decoration: underline;
-      }
-    }
 
     .card-img-top {
       width: 100%;
@@ -71,6 +56,10 @@
       max-width: 100%;
     }
 
+    a {
+      cursor: pointer;
+    }
+
     .price {
       font-size: 1rem;
       font-weight: bold;
@@ -93,13 +82,13 @@
       color: #fff;
       height: 30%;
       width: 80%;
+      max-width: 90%;
       display: none;
       align-items: center;
       justify-content: center;
       font-size: 0.6rem;
       border-radius: 4px;
       z-index: 10;
-      max-width: 90%;
       overflow: auto;
       word-break: break-word;
       white-space: normal;
@@ -110,4 +99,113 @@
     }
   }
 
+  .modal-overlay {
+    position: fixed;
+    top: 5%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+
+  .modal-content {
+    background: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    max-width: 55rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+  }
+
+  button {
+    background-color: rgb(145, 26, 243);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    width: 20em;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 1rem;
+
+    &:hover {
+      background-color: rgb(120, 20, 196);
+    }
+  }
+
+  /* --- Media Queries --- */
+
+  @media screen and (min-width: 1440px) and (max-width: 2559px) {
+    .card {
+      width: 230px;
+      height: 17rem;
+      padding: 1.2rem;
+
+      .card-img-top {
+        height: 45%;
+      }
+
+      h3 {
+        font-size: 1rem;
+      }
+
+      p {
+        font-size: 0.8rem;
+      }
+
+      .price {
+        font-size: 1.1rem;
+      }
+
+      a {
+        font-size: 1rem;
+      }
+
+      .popover {
+        font-size: 0.75rem;
+        width: 85%;
+      }
+    }
+  }
+
+  @media screen and (min-width: 2560px) {
+    .card {
+      width: 420px;
+      height: 30rem;
+      padding: 1.5rem;
+
+      .card-img-top {
+        height: 65%;
+      }
+
+      h3 {
+        font-size: 1.3rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .price {
+        font-size: 1.2rem;
+      }
+
+      a {
+        font-size: 1.2rem;
+      }
+
+      .popover {
+        font-size: 0.9rem;
+        width: 90%;
+      }
+    }
+  }
 }

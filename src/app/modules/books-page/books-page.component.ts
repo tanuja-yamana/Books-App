@@ -19,6 +19,7 @@ export class BooksPageComponent implements OnInit {
   sortAscending = true;
   sortActive = false;
   selectedBookFilter: string = '';
+  selectedBook: any = null;
 
   constructor(private bookcardService: BookCardService) { }
 
@@ -129,5 +130,14 @@ export class BooksPageComponent implements OnInit {
     this.currentPage = 1;
     this.fetchBooks();
   }
+openModal(book: any) {
+    this.selectedBook = book;
+  }
+
+  closeModal() {
+    this.selectedBook = null;
+  }
+
+  
 
 }

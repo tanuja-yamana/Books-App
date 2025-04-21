@@ -5,13 +5,22 @@ import { AboutPageComponent } from './modules/about-page/about-page.component';
 import { ContactPageComponent } from './modules/contact-page/contact-page.component';
 import { BooksPageComponent } from './modules/books-page/books-page.component';
 import { NewBooksComponent } from './modules/new-books/new-books.component';
+import { MoreDetailsComponent } from './components/more-details/more-details.component';
 
 const routes: Routes = [
-  { path: '', component: LandingPageComponent},
+ 
   { path: 'about ', component: AboutPageComponent },
   { path: 'books' , component: BooksPageComponent },
   { path: 'contactus', component: ContactPageComponent},
-  { path: 'newbooks' , component: NewBooksComponent }
+  { path: 'newbooks' , component: NewBooksComponent, 
+    
+  },
+  { path: 'more-details/:isbn13', component: MoreDetailsComponent },
+
+  // { path: 'more-details/:id', component: MoreDetailsComponent},
+ 
+  
+  { path: '', component: LandingPageComponent},
 ];
 
 @NgModule({

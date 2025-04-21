@@ -18,7 +18,12 @@
 
     <ng-container *ngIf="!loading && !noBooksFound; else noBooks">
       <div class="cards-container">
-        <app-book-card *ngFor="let book of books" [book]="book"></app-book-card>
+        <app-book-card
+  *ngFor="let book of books"
+  [book]="book"
+  (moreDetails)="openModal($event)"
+></app-book-card>
+
       </div>
     </ng-container>
 

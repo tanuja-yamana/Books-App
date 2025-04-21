@@ -1,33 +1,29 @@
 :host {
   .scroll-container {
-    height: 91vh;
     overflow-y: scroll;
-  }
 
-  .scroll-container::-webkit-scrollbar {
-    display: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   .carousel-viewport {
-    width: 100%;
-    max-width: calc(8rem * 5); /* 150px converted to rem */
+    width: 50%;
+    padding: 0.625rem 0;
     overflow: hidden;
-    padding: 0.625rem 0; /* 10px converted to rem */
-    // gap: 5rem; /* 30px converted to rem */
   }
 
   .carousel-track {
-    // width: 100%;
     display: flex;
-    transition: transform 0.5s ease;
+    width: 40%;
     margin: 0;
     padding: 0;
+    transition: transform 0.5s ease;
   }
 
   .carousel-card {
-    // flex: 0 0 20%;
-    width: 8rem; /* 100px converted to rem */
-    height: 18rem; /* Fixed height in rem */
+    width: 7rem;
+    height: 18rem;
     transition: transform 0.3s ease;
 
     &.edge-card {
@@ -36,26 +32,26 @@
     }
 
     &.near-middle {
-      transform: scale(0.8);
+      transform: scale(0.7);
       z-index: 2;
     }
 
     &.middle-card {
-      transform: scale(1.0);
+      transform: scale(0.8);
       z-index: 3;
     }
 
     .card {
       height: 100%;
-      text-align: center;
-      box-shadow: 0 0 0.3125rem rgba(0, 0, 0, 0.1); /* 5px converted to rem */
       position: relative;
+      text-align: center;
+      box-shadow: 0 0 0.3125rem rgba(0, 0, 0, 0.1);
     }
 
     img {
-      width: 5rem; /* 80px converted to rem */
+      width: 5rem;
       height: auto;
-      border-radius: 0.5rem; /* 8px converted to rem */
+      border-radius: 0.5rem;
     }
 
     h5 {
@@ -65,7 +61,6 @@
 
     p {
       font-size: 0.8rem;
-      padding: 0;
       margin-bottom: 0;
     }
 
@@ -73,7 +68,6 @@
       font-size: 0.75rem;
       color: rgb(145, 26, 243);
       text-decoration: none;
-      padding: 0;
     }
   }
 
@@ -81,15 +75,16 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    gap: 1.25rem; /* 20px converted to rem */
+    gap: 1.25rem;
   }
 
   .card {
+    width: 15.625rem;
+    height: 18.75rem;
+    margin: 0.3125rem;
+    padding: 0.625rem;
     border: 1px solid #ccc;
-    border-radius: 0.5rem; /* 8px converted to rem */
-    padding: 0.625rem; /* 10px converted to rem */
-    margin: 0.3125rem; /* 5px converted to rem */
-    width: 15.625rem; /* 250px converted to rem */
+    border-radius: 0.5rem;
     background-color: rgb(183, 164, 201);
     color: rgb(37, 34, 34);
     text-align: center;
@@ -97,14 +92,13 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 18.75rem; /* 300px converted to rem */
     overflow: hidden;
     transition: transform 0.3s ease, background-color 0.3s ease;
 
     img {
-      width: 5rem; /* 80px converted to rem */
+      width: 5rem;
       height: auto;
-      border-radius: 0.5rem; /* 8px converted to rem */
+      border-radius: 0.5rem;
     }
 
     h3 {
@@ -129,23 +123,23 @@
   }
 
   .ribbon {
-    width: 9.375rem; /* 150px converted to rem */
+    width: 9.375rem;
     background: crimson;
     color: white;
-    text-align: center;
     font-weight: bold;
+    text-align: center;
+    font-size: 0.75rem;
+    padding: 0.3125rem 0;
     position: absolute;
-    left: -3.4375rem; /* -55px converted to rem */
+    left: -3.4375rem;
     transform: rotate(-45deg);
     z-index: 10;
-    box-shadow: 0 0.1875rem 0.625rem rgba(0, 0, 0, 0.3); /* 3px and 10px converted to rem */
-    font-size: 0.75rem;
-    padding: 0.3125rem 0; /* 5px converted to rem */
+    box-shadow: 0 0.1875rem 0.625rem rgba(0, 0, 0, 0.3);
   }
 
   .loading-spinner {
     text-align: center;
-    padding: 1.25rem; /* 20px converted to rem */
+    padding: 1.25rem;
     font-size: 1rem;
     color: #555;
   }
@@ -153,5 +147,70 @@
   button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+
+  @media screen and (min-width: 2560px) {
+    .scroll-container {
+      margin-top: 3rem;
+    }
+
+    .carousel-viewport {
+      max-width: calc(10rem * 5);
+      padding: 1rem 0;
+    }
+
+    .carousel-card {
+      width: 10rem;
+      height: 22rem;
+
+      img {
+        width: 6rem;
+      }
+
+      h5 {
+        font-size: 1.25rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      a {
+        font-size: 1rem;
+      }
+    }
+
+    .card {
+      width: 25.8rem;
+      height: 30rem;
+      padding: 1rem;
+
+      img {
+        width: 6rem;
+      }
+
+      h3 {
+        font-size: 1.1rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      a {
+        font-size: 1rem;
+      }
+    }
+
+    .ribbon {
+      width: 11rem;
+      left: -4rem;
+      font-size: 1rem;
+      padding: 0.5rem 0;
+    }
+
+    .loading-spinner {
+      font-size: 1.25rem;
+    }
   }
 }

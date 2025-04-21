@@ -1,131 +1,135 @@
 :host {
-    .container {
-      display: flex;
-      justify-content: center;
-      margin-top: 1rem;
-    }
-  
-    .content {
-      background-color: beige;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      box-sizing: border-box;
-      margin-top: 0.3rem;
-      padding: 1.25rem;
-      max-height: 100vh; /* Ensure content does not exceed the viewport height */
-      overflow-y: scroll; /* Allow vertical scrolling */
-      height: 91vh;
-    }
-  
-    /* Hide the scrollbar appearance */
-    .content::-webkit-scrollbar {
+  /* Main Container */
+  .container {
+    display: grid;
+    gap: 1rem;
+    // margin: 0;
+    margin-top: 1rem;
+  }
+
+  /* Content Area */
+  .content {
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin-top: 0.3rem;
+    padding: 1.25rem;
+    max-height: 100vh;
+    overflow-y: scroll;
+    height: 91vh;
+
+    &::-webkit-scrollbar {
       width: 0;
       height: 0;
     }
-  
-    .content {
-      -ms-overflow-style: none; /* For Internet Explorer and Edge */
-      scrollbar-width: none; /* For Firefox */
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Add Book - Centered Input & Button */
+  /* Add Book - Centered Input & Button */
+.addBook {
+  background-color: #fff3e0;
+  max-width: 30rem; /* Increased from 22rem */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 0 auto;
+  border-radius: 0.375rem;
+  box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1);
+  padding: 0.4rem 0.6rem;
+
+  input[type='text'] {
+    max-width: 26rem; /* Increased accordingly */
+    padding: 0.4rem 0.6rem;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    outline: none;
+    background-color: #fff3e0;
+    margin-right: 0.4rem;
+  }
+
+  button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+
+    i {
+      color: #333;
+      transition: color 0.3s;
     }
-  
-    input[type='text'] {
-      margin-right: 0.4rem;
-      border: 0.0625rem solid #ccc;
-      border-radius: 0.25rem;
-      font-size: 1rem;
-      outline: none;
-      border: none;
-      background-color: #fff3e0;
+
+    &:hover i {
+      color: #007bff;
     }
-  
-    .addBook {
+  }
+}
+
+
+  /* Headings */
+  h2,
+  h3 {
+    text-align: center;
+  }
+
+  h2 {
+    color: brown;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    color: #444;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Book List Items */
+  .list-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    li {
       display: flex;
-      background-color: #fff3e0;
-      padding: 0.4rem 0.6rem;
-      margin-bottom: 8px;
-      width: 100%;
-      max-width: 22rem;
-      box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1);
-    }
-  
-    button {
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      margin-left: auto;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-  
-      i {
-        color: #333;
-        transition: color 0.3s;
-      }
-  
-      &:hover i {
-        color: #007bff;
-      }
-    }
-  
-    h2,
-    h3 {
-      text-align: center;
-    }
-  
-    h2 {
-      color: brown;
-      font-size: 1.8rem;
-      margin-bottom: 0.5rem;
-    }
-  
-    h3 {
-      color: #444;
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
-    }
-  
-    .list-items {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      width: 100%;
-      max-width: 22rem;
-    }
-  
-    .list-items li {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.5rem;
-      padding: 0.4rem 0.6rem;
       background-color: #fff3e0;
       border-radius: 0.375rem;
       box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1);
-  
+      padding: 0.4rem 1rem;
+      list-style-type: none;
+
       .book-item {
         flex: 1;
         display: flex;
         justify-content: space-between;
         align-items: center;
-  
+
         span {
           flex: 1;
         }
-  
+
         .edit-section {
           display: flex;
           flex: 1;
           align-items: center;
           gap: 0.375rem;
-  
+
           input[type='text'] {
             flex: 1;
             padding: 0.4rem 0.625rem;
             font-size: 1rem;
           }
         }
-  
+
         .action-buttons {
           display: flex;
           align-items: center;
@@ -134,4 +138,121 @@
       }
     }
   }
-  
+
+  /* General Button Styling */
+  button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    margin-left: auto;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+
+    i {
+      color: #333;
+      transition: color 0.3s;
+    }
+
+    &:hover i {
+      color: #007bff;
+    }
+  }
+}
+
+/* Responsive Design for Ultra-Wide Screens */
+/* Responsive Design for Ultra-Wide Screens */
+@media (min-width: 2560px) {
+  :host {
+    .container {
+      gap: 2rem;
+      // margin-top: 2rem;
+    }
+
+    .content {
+      margin-top: 2rem;
+      padding: 2rem;
+      font-size: 2rem;
+    }
+
+    .addBook {
+      max-width: 45rem;
+      padding: 1rem 1.5rem;
+
+      input[type='text'] {
+        max-width: 40rem;
+        padding: 0.8rem 2.2rem;
+        font-size: 2rem;
+      }
+
+      button {
+        font-size: 2rem;
+
+        i {
+          font-size: 2.5rem;
+        }
+      }
+    }
+
+    h2 {
+      font-size: 3.8rem;
+    }
+
+    h3 {
+      font-size: 3rem;
+    }
+
+    .list-items {
+      max-width: 350em;
+      // max-width: 1600px; /* Set max-width */
+      margin: 0 auto; /* Center it */
+      grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
+      gap: 3rem; /* Increased gap for better spacing */
+      
+      li {
+        padding: 1.5rem; /* Increased padding for more space */
+        background-color: #fff3e0;
+        border-radius: 0.375rem;
+        box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1);
+        display: flex; /* Flexbox layout for list item */
+        flex-direction: row; /* Ensure items are side by side */
+        justify-content: space-between; /* Distribute items evenly */
+        align-items: center; /* Vertically align items */
+        
+        .book-item {
+          display: flex;
+          flex-direction: row; /* Ensure items inside book-item are side by side */
+          justify-content: space-between;
+          gap: 2rem; /* Increased gap between items */
+          flex: 1; /* Allow items to take full available space */
+
+          .edit-section {
+            input[type='text'] {
+              padding: 0.8rem 1.2rem;
+              font-size: 2rem;
+            }
+          }
+
+          .action-buttons {
+            gap: 0.8rem;
+            button {
+              font-size: 2rem;
+
+              i {
+                font-size: 2rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    button {
+      font-size: 1.7rem;
+
+      i {
+        font-size: 1.7rem;
+      }
+    }
+  }
+}

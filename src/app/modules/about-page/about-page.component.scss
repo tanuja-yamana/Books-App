@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    margin-top: 0.3rem;
+    // margin-top: 0.3rem;
     padding: 1.25rem;
     max-height: 100vh;
     overflow-y: scroll;
@@ -27,12 +27,9 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-
-  /* Add Book - Centered Input & Button */
-  /* Add Book - Centered Input & Button */
 .addBook {
   background-color: #fff3e0;
-  max-width: 30rem; /* Increased from 22rem */
+  max-width: 30rem; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,7 +91,7 @@
   .list-items {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    gap: 1.5rem;
     width: 100%;
     padding: 0;
     margin: 0;
@@ -165,12 +162,13 @@
 @media (min-width: 2560px) {
   :host {
     .container {
-      gap: 2rem;
-      // margin-top: 2rem;
+      gap: 2.3rem;
+      margin-top: 3rem;
+      margin-left: 1.5rem;
     }
 
     .content {
-      margin-top: 2rem;
+      margin-top: 3rem;
       padding: 2rem;
       font-size: 2rem;
     }
@@ -203,55 +201,63 @@
     }
 
     .list-items {
-      max-width: 350em;
-      // max-width: 1600px; /* Set max-width */
-      margin: 0 auto; /* Center it */
-      grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
-      gap: 3rem; /* Increased gap for better spacing */
-      
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);  /* Increased columns */
+      gap: 3.5rem;                           /* Increased gap between items */
+      width: 100%;                            /* Set width to 95% */
+      padding: 0;
+      margin: 0 ;  
+      box-sizing: border-box;                      /* Center the list-items */
+  
       li {
-        padding: 1.5rem; /* Increased padding for more space */
+        box-sizing: border-box;
+        display: flex;
         background-color: #fff3e0;
         border-radius: 0.375rem;
         box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1);
-        display: flex; /* Flexbox layout for list item */
-        flex-direction: row; /* Ensure items are side by side */
-        justify-content: space-between; /* Distribute items evenly */
-        align-items: center; /* Vertically align items */
-        
-        .book-item {
-          display: flex;
-          flex-direction: row; /* Ensure items inside book-item are side by side */
-          justify-content: space-between;
-          gap: 2rem; /* Increased gap between items */
-          flex: 1; /* Allow items to take full available space */
+        padding: 1.4rem 2rem;
+        list-style-type: none;
 
+        /* Increased width of each li */
+        width: 35rem;  /* You can adjust this value based on your preference */
+
+        .book-item {
+          flex: 1;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+  
+          span {
+            flex: 1;
+          }
+  
           .edit-section {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            gap: 0.375rem;
+  
             input[type='text'] {
-              padding: 0.8rem 1.2rem;
-              font-size: 2rem;
+              flex: 1;
+              padding: 0.4rem 0.625rem;
+              font-size: 1rem;
             }
           }
-
+  
           .action-buttons {
-            gap: 0.8rem;
-            button {
-              font-size: 2rem;
-
-              i {
-                font-size: 2rem;
-              }
-            }
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
           }
         }
       }
     }
 
     button {
-      font-size: 1.7rem;
+      font-size: 2rem;
 
       i {
-        font-size: 1.7rem;
+        font-size: 2rem;
       }
     }
   }

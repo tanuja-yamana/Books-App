@@ -1,4 +1,4 @@
-<strong>{{ book.title }}</strong>
+<p class="title">{{ book.title }}</p>
 
 <div *ngIf="book; else notFound" class="card">
   <div class="card-image">
@@ -34,12 +34,24 @@
         <td><strong>URL:</strong></td>
         <td><a [href]="book.url" target="_blank">{{ book.url }}</a></td>
       </tr>
+      <tr>
+        <td><strong>Chapter 2:</strong></td>
+        <td>
+          <button (click)="openChapter2()" class="btn">Open Chapter 2</button>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Chapter5:</strong></td>
+        <td>
+          <button (click)='openChapter5()' class="btn">Open Chapter 5</button>
+        </td>
+      </tr>
     </table>
   </div>
+
+  <!-- Optional hidden iframe -->
+  <!-- <iframe #chapterIframe src="https://itbook.store/files/9781617294136/chapter2.pdf" style="display: none;"></iframe> -->
 </div>
-
-
-
 
 <ng-template #notFound>
   <p class="text-center">Book not found!</p>

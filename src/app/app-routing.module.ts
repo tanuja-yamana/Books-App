@@ -16,9 +16,6 @@ const routes: Routes = [
     
   },
   { path: 'more-details/:isbn13', component: MoreDetailsComponent },
-
-  // { path: 'more-details/:id', component: MoreDetailsComponent},
- 
   
   { path: '', component: LandingPageComponent},
 ];

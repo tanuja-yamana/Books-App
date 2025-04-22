@@ -11,7 +11,6 @@ export class BookCardComponent {
   modalVisible = false;
   selectedBook: any = null;
 
-
   ngOnInit(): void {}
 
   showPopover(): void {
@@ -27,14 +26,13 @@ export class BookCardComponent {
   }
 
   openModal() {
-    this.selectedBook = this.book;  // Set selectedBook to the current book
+    this.selectedBook = this.book;  
     this.modalVisible = true;
   }
 
-  // Method to close the modal
   closeModal() {
     this.modalVisible = false;
-    this.selectedBook = null;  // Reset selected book when closing the modal
+    this.selectedBook = null;  
   }
   
 }

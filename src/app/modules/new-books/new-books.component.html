@@ -1,7 +1,6 @@
 <div class="scroll-container" (scroll)="onContainerScroll($event)">
   <div class="d-flex justify-content-center align-items-center mt-4">
     <button class="btn btn-outline-secondary me-2" (click)="prev()" [disabled]="currentIndex === 0">&#8592;</button>
-
     <div class="carousel-viewport overflow-hidden">
       <div class="carousel-track" [style.transform]="getTransform()" [class.animate]="isAnimating">
         <div class="carousel-card" *ngFor="let book of carouselBooks; let i = index" [ngClass]="getCardClass(i)">
@@ -11,16 +10,15 @@
             <h5 class="card-title">{{ book.title }}</h5>
             <p class="card-text">{{ book.subtitle }}</p>
             <p class="card-text"><strong>{{ book.price }}</strong></p>
-            <a href="/more-details/{{ book.isbn13 }}" target="_blank" (click)="storeBook(book)">More Details</a>
+            <a [routerLink]="['/more-details', book.isbn13]" target="_blank">More Details</a>
           </div>
         </div>
       </div>
     </div>
-
-    <button class="btn btn-outline-secondary ms-2" (click)="next()" [disabled]="currentIndex + visibleCount >= allBooks.length">&#8594;</button>
+    <button class="btn btn-outline-secondary ms-2" (click)="next()"
+      [disabled]="currentIndex + visibleCount >= allBooks.length">&#8594;</button>
   </div>
 
-  <!-- Random Books Section -->
   <div class="cards-container mt-5">
     <ng-container *ngFor="let book of randomBooks">
       <div class="card">
@@ -29,11 +27,7 @@
         <h3>{{ book.title }}</h3>
         <p>{{ book.subtitle }}</p>
         <p><strong>{{ book.price }}</strong></p>
-        <!-- <a [routerLink]="['/more-details', book.id]" target="_blank">More Details</a> -->
-        <a href="/more-details/{{ book.isbn13 }}" target="_blank" (click)="storeBook(book)">More Details</a>
-
-
-
+        <a [routerLink]="['/more-details', book.isbn13]" target="_blank">More Details</a>
       </div>
     </ng-container>
   </div>

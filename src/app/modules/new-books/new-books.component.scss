@@ -1,6 +1,8 @@
 :host {
   .scroll-container {
-    overflow-y: scroll;
+    height: 91vh;
+    overflow-y: auto;
+    position: relative;
 
     &::-webkit-scrollbar {
       display: none;
@@ -74,8 +76,8 @@
   .cards-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 1.25rem;
+    justify-content: center;
+    gap: 3.4rem;
   }
 
   .card {
@@ -148,69 +150,251 @@
     opacity: 0.5;
     cursor: not-allowed;
   }
+}
 
-  @media screen and (min-width: 2560px) {
-    .scroll-container {
-      margin-top: 3rem;
+@media (min-width: 1024px) and (max-width: 1439px) {
+  :host {
+    .cards-container {
+      gap: 0.5rem;
     }
 
     .carousel-viewport {
-      max-width: calc(10rem * 5);
-      padding: 1rem 0;
+      width: 60%;
     }
 
-    .carousel-card {
-      width: 10rem;
-      height: 22rem;
-
-      img {
-        width: 6rem;
-      }
-
-      h5 {
-        font-size: 1.25rem;
-      }
-
-      p {
-        font-size: 1rem;
-      }
-
-      a {
-        font-size: 1rem;
-      }
+    .carousel-track {
+      width: 80%;
     }
 
     .card {
-      width: 25.8rem;
-      height: 30rem;
-      padding: 1rem;
+      width: 14rem;
+      height: 15rem;
 
       img {
         width: 6rem;
       }
 
       h3 {
-        font-size: 1.1rem;
+        font-size: 0.9rem;
       }
 
       p {
-        font-size: 1rem;
+        font-size: 0.7rem;
       }
 
       a {
+        font-size: 0.7rem;
+      }
+    }
+
+    .carousel-card {
+      width: 8.5rem;
+      height: 20rem;
+
+      &.edge-card {
+        transform: scale(0.65);
+      }
+
+      &.near-middle {
+        transform: scale(0.75);
+      }
+
+      &.middle-card {
+        transform: scale(0.85);
+      }
+
+      img {
+        width: 5.5rem;
+      }
+
+      h5 {
         font-size: 1rem;
+      }
+
+      p {
+        font-size: 0.85rem;
+      }
+
+      a {
+        font-size: 0.8rem;
       }
     }
 
     .ribbon {
-      width: 11rem;
-      left: -4rem;
-      font-size: 1rem;
-      padding: 0.5rem 0;
+      width: 10.5rem;
+      font-size: 0.85rem;
+      left: -3.8rem;
     }
 
     .loading-spinner {
-      font-size: 1.25rem;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+@media (min-width: 1440px) and (max-width: 2559px) {
+  :host {
+    .cards-container {
+      gap: 3.8rem;
+    }
+
+    .carousel-viewport {
+      width: 60%;
+    }
+
+    .carousel-track {
+      width: 80%;
+    }
+
+    .card {
+      width: 18rem;
+      height: 22rem;
+
+      img {
+        width: 6rem;
+      }
+
+      h3 {
+        font-size: 1rem;
+      }
+
+      p {
+        font-size: 0.8rem;
+      }
+
+      a {
+        font-size: 0.8rem;
+      }
+    }
+
+    .carousel-card {
+      width: 10rem;
+      height: 24rem;
+
+      &.edge-card {
+        transform: scale(0.7);
+      }
+
+      &.near-middle {
+        transform: scale(0.8);
+      }
+
+      &.middle-card {
+        transform: scale(0.9);
+      }
+
+      img {
+        width: 6.5rem;
+      }
+
+      h5 {
+        font-size: 1.1rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+
+      a {
+        font-size: 0.9rem;
+      }
+    }
+
+    .ribbon {
+      width: 12rem;
+      font-size: 1rem;
+      left: -4rem;
+    }
+
+    .loading-spinner {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media (min-width: 2560px) {
+  :host {
+    .cards-container {
+      gap: 9.8rem;
+    }
+
+    .carousel-viewport {
+      width: 50%;
+      padding: 4.625rem 0;
+      overflow: hidden;
+      margin: 0 2rem;
+    }
+
+    .card {
+      width: 30rem;
+      height: 40rem;
+      gap: 1rem;
+
+      img {
+        width: 12rem;
+      }
+
+      h3 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 1.5rem;
+      }
+
+      a {
+        font-size: 1.5rem;
+      }
+    }
+
+    .carousel-card {
+      width: 12rem;
+      height: 34rem;
+
+      &.edge-card {
+        transform: scale(0.8);
+      }
+
+      &.near-middle {
+        transform: scale(0.9);
+      }
+
+      &.middle-card {
+        transform: scale(1);
+      }
+
+      img {
+        width: 10rem;
+      }
+
+      h5 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 1.3rem;
+      }
+
+      a {
+        font-size: 1.3rem;
+      }
+    }
+
+    .ribbon {
+      width: 16rem;
+      font-size: 1.3rem;
+      text-align: center;
+      top: 1rem;
+      left: -4.5rem;
+      transform: rotate(-45deg);
+    }
+
+    .loading-spinner {
+      font-size: 2.5rem;
+    }
+
+    button {
+      font-size: 2.5rem;
     }
   }
 }

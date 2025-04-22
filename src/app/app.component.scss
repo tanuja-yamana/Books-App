@@ -14,12 +14,17 @@ html, body {
 
 /* Push content down below fixed navbar */
 .content {
-    margin-top: 3rem; /* Same as nav height */
-    height: calc(100vh - 3rem);
-    // height: 64.5rem;
-    // height: 100%;
-    // flex: 1;
     overflow-y: auto;
-    // padding: 1rem 0.5rem 0 0.5rem;
     box-sizing: border-box;
-}
+  }
+  
+  .with-navbar {
+    margin-top: 3rem;
+    height: calc(100vh - 3rem);
+  }
+  
+  .full-height {
+    margin-top: 0;
+    height: 100vh;
+  }
+  

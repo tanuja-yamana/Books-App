@@ -22,13 +22,13 @@ export class NewBooksComponent implements OnInit {
   ngOnInit(): void {
     this.newBookCardService.getBooks().subscribe((data: any) => {
       this.allBooks = data.books;
+      localStorage.setItem('allBooks', JSON.stringify(this.allBooks)); // ✅ Store allBooks once
+  
       this.carouselBooks = this.allBooks;
-      const remainingBooks = this.allBooks;
-      if (remainingBooks.length) {
-        this.loadMoreBooks(remainingBooks);
-      }
+      this.loadMoreBooks(this.allBooks);
     });
   }
+  
 
   onContainerScroll(event: any): void {
     const scrollContainer = event.target;

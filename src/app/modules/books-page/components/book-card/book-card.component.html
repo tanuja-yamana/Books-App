@@ -1,20 +1,23 @@
-<div class="card">
+<div class="card book-card">
   <img class="card-img-top" [src]="book.image" alt="{{ book.title }}" />
   <h3>{{ book.title }}</h3>
   <p class="subtitle" (mouseenter)="showPopover()" (mouseleave)="hidePopover()">
     {{ book.subtitle }}
   </p>
   <p>Price: <strong>{{ book.price }}</strong></p>
-  <a  (click)="openModal()">More Details</a>
-    <div *ngIf="modalVisible" class="modal-overlay" (click)="closeModal()">
-      <div class="modal-content" (click)="$event.stopPropagation()">
+  <a (click)="openModal()">More Details</a>
+
+  <div *ngIf="modalVisible" class="modal-overlay" (click)="closeModal()">
+    <div class="modal-wrapper" (click)="$event.stopPropagation()">
+      <div class="modal-content" >
         <app-more-details
           *ngIf="selectedBook"
           [book]="selectedBook"
           (close)="closeModal()"
         ></app-more-details>
-        <button (click)="closeModal()">Close</button>
       </div>
+      <button class="modal-close-btn" (click)="closeModal()">Close</button>
+    </div>
   </div>
 
   <div *ngIf="popoverVisible" class="popover">

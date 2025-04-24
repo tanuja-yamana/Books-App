@@ -10,7 +10,7 @@
         width: 100%;
         height: 100%;
         object-fit: fill;
-        margin-top: 0.5rem !important;
+        margin-top: 0.2rem !important;
       }
     }
 
@@ -26,7 +26,6 @@
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     }
 
-    // Styles for larger screens (2560px and above)
     @media screen and (min-width: 2560px) {
       
       .landing-page-title {

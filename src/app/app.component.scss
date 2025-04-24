@@ -6,16 +6,17 @@ html, body {
     height: 100%;
 }
 
+
 .app-wrapper {
     height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* Push content down below fixed navbar */
 .content {
     overflow-y: auto;
     box-sizing: border-box;
+    
   }
   
   .with-navbar {

@@ -29,9 +29,6 @@ import { MoreDetailsComponent } from './components/more-details/more-details.com
     ToggleButtonComponent,
     ContactPageComponent,
     NewBooksComponent,
-    // MoreDetailsComponent,
-    // BooksPageComponent,
-    // BookCardComponent
   ],
   imports: [
     BrowserModule,

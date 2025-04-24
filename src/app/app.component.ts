@@ -16,9 +16,9 @@ export class AppComponent {
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: any) => {
         const currentUrl = event.urlAfterRedirects;
-
-        // Match full path or using regex for flexibility
         this.showNavbar = !/^\/more-details(\/|$)/.test(currentUrl);
       });
   }
+
+  
 }

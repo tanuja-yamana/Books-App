@@ -7,7 +7,7 @@
         height: 3rem; /* Define height of navbar */
         background-color: rgb(163, 155, 201);
         // padding: 0 1.8rem;
-        padding: 0 4rem;
+        padding: 0 3rem;
         z-index: 1000;
         display: flex;
         align-items: center;
@@ -45,7 +45,7 @@
     }
 
     nav .navbar-nav li a.active-link {
-        color: rgb(49, 133, 105);
+        color: purple;
     }
 
     .app-toggle-button {
@@ -54,10 +54,10 @@
     }
 
     @media screen and (min-width: 1024px) {
-        nav {
+        // nav {
             height: 3.4rem;
-            padding: 0 2.5rem;
-        }
+        //     padding: 0 2.5rem;
+        // }
 
         nav .navbar-brand img {
             height: 20px;
@@ -72,32 +72,42 @@
         }
 
         nav .navbar-nav li a:hover {
-            color: rgb(49, 133, 105);
+            color: purple;
         }
 
         .app-toggle-button {
             font-size: 0.8rem;
         }
     }
-
-    @media screen and (min-width: 2560px) {
+    @media screen and (min-width: 1440px){
         nav {
-            height: 6rem;
-            padding: 0 4.5rem;
+            height: 4rem;
         }
         nav .navbar-brand span {
-            font-size: 3rem;
+            font-size: 1.5rem;
+        }
+        nav .navbar-nav li a {
+            font-size: 1.5rem !important;
+        }
+    }
+    @media screen and (min-width: 2560px) {
+        nav {
+            height: 7rem;
+            padding: 0 4rem;
+        }
+        nav .navbar-brand span {
+            font-size: 3.2rem;
         }
         nav .navbar-brand img {
             height: 70px !important;
         }
 
         nav .navbar-nav li a {
-            font-size: 2.5rem !important;
+            font-size: 2.7rem !important;
         }
 
         nav .navbar-nav li a.active-link {
-            color: rgb(49, 133, 105);
+            color: purple;
         }
     }
 }

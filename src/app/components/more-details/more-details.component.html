@@ -1,6 +1,6 @@
 <p class="title">{{ book.title }}</p>
 
-<div *ngIf="book; else notFound" class="card">
+<div *ngIf="book; else notFound" class="card ">
   <div class="card-image">
     <div class="image-container">
       <img [src]="book.image" class="card-img-top" [alt]="book.title" />
@@ -37,13 +37,13 @@
       <tr>
         <td><strong>Chapter 2:</strong></td>
         <td>
-          <button (click)="openChapter2()" class="btn">Open Chapter 2</button>
+          <button (click)="openChapter2()" class="btn">Click for Chapter 2</button>
         </td>
       </tr>
       <tr>
         <td><strong>Chapter5:</strong></td>
         <td>
-          <button (click)='openChapter5()' class="btn">Open Chapter 5</button>
+          <button (click)='openChapter5()' class="btn">Click for Chapter 5</button>
         </td>
       </tr>
     </table>

@@ -2,27 +2,27 @@
     <h2>This website contains a list of available Books</h2>
     <h3>The list of books available are:</h3>
     <div class="addBook">
-        <input type="text" [(ngModel)]="newBook" placeholder="Add a new book" />
-        <button (click)="addBook()"><i class="bi bi-plus"></i></button>
+      <input type="text" [(ngModel)]="newBook" placeholder="Add a new book" />
+      <button (click)="addBook()"><i class="bi bi-plus"></i></button>
     </div>
-        
+  
     <div class="container">
-        
-        <ol class="list-items">
-            <li *ngFor="let book of bookList; index as i">
-                <div class="book-item">
-                    <span *ngIf="editModeIndex !== i">{{ book }}</span>
-                    <div *ngIf="editModeIndex === i" class="edit-section">
-                        <input type="text" [(ngModel)]="editedBook" />
-                        <button (click)="updateBook()"><i class="bi bi-check-lg"></i></button>
-                        <button (click)="cancelEdit()"><i class="bi bi-trash3"></i></button>
-                    </div>
-                    <div class="action-buttons" *ngIf="editModeIndex !== i">
-                        <button (click)="startEditing(i)"><i class="bi bi-pencil"></i></button>
-                        <button (click)="deleteBook(i)"><i class="bi bi-trash3"></i></button>
-                    </div>
-                </div>
-            </li>
-        </ol>
+      <ol class="list-items">
+        <li *ngFor="let book of bookList; index as i">
+          <div class="book-item">
+            <span *ngIf="editModeIndex !== i">{{ book }}</span>
+            <div *ngIf="editModeIndex === i" class="edit-section">
+              <input type="text" [(ngModel)]="editedBook" />
+              <button (click)="updateBook()"><i class="bi bi-check-lg"></i></button>
+              <button (click)="cancelEdit()"><i class="bi bi-trash3"></i></button>
+            </div>
+            <div class="action-buttons" *ngIf="editModeIndex !== i">
+              <button (click)="startEditing(i)"><i class="bi bi-pencil"></i></button>
+              <button (click)="deleteBook(i)"><i class="bi bi-trash3"></i></button>
+            </div>
+          </div>
+        </li>
+      </ol>
     </div>
-</div>
+  </div>
+  

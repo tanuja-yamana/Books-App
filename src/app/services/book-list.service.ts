@@ -17,7 +17,8 @@ export class BookListService {
   }
 
   addBook(book: string): void {
-    this.bookList.push(book);
+    // this.bookList.push(book);
+    this.bookList.unshift(book);
   }
 
   updateBook(index: number, updatedBook: string): void {

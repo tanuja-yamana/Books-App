@@ -239,7 +239,7 @@
 @media screen and (min-width: 1024px) and (max-width: 1439px) {
   :host-context(.book-card) {
     .title {
-      font-size: 0.8rem;
+      font-size: 0.8rem ;
       margin-bottom: 0;
     }
 
@@ -249,8 +249,8 @@
       margin: 0;
 
       .card-image {
-        flex: 0 0 25%;
-        max-width: 25%;
+        flex: 0 0 20%;
+        max-width: 20%;
 
         img {
           border-radius: 1rem;
@@ -260,13 +260,62 @@
           .btn-buy,
           .btn-preview {
             font-size: 0.5rem;
-            padding: 0.475rem 0.3rem;
+            padding: 0.375rem 0.25rem;
           }
         }
       }
 
       .card-body {
-        padding-left: 1rem;
+        padding-left: 0.8rem;
+
+        table {
+          font-size: 0.6rem;
+
+          td {
+            padding: 0.35rem;
+            font-size: 0.6rem;
+
+            a,
+            .btn {
+              font-size: 0.6rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1440px) and (max-width: 2559px) {
+  :host-context(.book-card) {
+    .title {
+      font-size: 1rem ;
+      margin-bottom: 0;
+    }
+
+    .card {
+      padding: 0.5rem;
+      font-size: 0.5rem;
+      margin: 0;
+
+      .card-image {
+        flex: 0 0 20%;
+        max-width: 20%;
+
+        img {
+          border-radius: 1rem;
+        }
+
+        .button-container {
+          .btn-buy,
+          .btn-preview {
+            font-size: 0.5rem;
+            padding: 0.375rem 0.25rem;
+          }
+        }
+      }
+
+      .card-body {
+        padding-left: 0.8rem;
 
         table {
           font-size: 0.6rem;
@@ -286,19 +335,20 @@
   }
 }
 
+
 @media screen and (min-width: 2560px) {
   :host {
     .title {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
     }
 
     .card {
       gap: 3rem;
-      margin: 2rem;
+      // margin: 2rem;
 
       .card-image {
-        flex: 0 0 30%;
-        max-width: 30%;
+        flex: 0 0 25%;
+        max-width: 25%;
 
         img {
           border-radius: 1rem;
@@ -307,8 +357,8 @@
         .button-container {
           .btn-buy,
           .btn-preview {
-            font-size: 1.125rem;
-            padding: 1rem 1.25rem;
+            font-size: 0.8rem;
+            padding: 1rem 0.9rem;
           }
         }
       }
@@ -317,14 +367,14 @@
         padding-left: 2rem;
 
         table {
-          font-size: 1.25rem;
+          font-size: 1rem;
 
           td {
-            padding: 1rem;
-            font-size: 1.25rem;
+            padding: 0.8rem;
+            font-size: 1rem;
 
             a {
-              font-size: 1.125rem;
+              font-size: 1rem;
             }
 
             .btn {

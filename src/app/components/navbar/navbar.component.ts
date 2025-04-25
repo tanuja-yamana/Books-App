@@ -11,11 +11,14 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  @Output() cartClick = new EventEmitter<void>();
+
   navLinks = [
     { label : 'About' , path : 'about' },
     { label : 'Books' , path : 'books' },
     { label : 'Contact us' , path : 'contactus'},
-    { label : 'New Books' , path: 'newbooks' }
+    { label : 'New Books' , path: 'newbooks' },
+    // { label : 'Cart' , path: 'cart'},
   ];
 
 

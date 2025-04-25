@@ -19,6 +19,7 @@ import { NewBooksModule } from './modules/new-books/new-books.module';
 import { FormsModule } from '@angular/forms';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MoreDetailsComponent } from './components/more-details/more-details.component';
+import { CartModule } from './modules/cart/cart.module';
 // import { MoreDetailsComponent } from './components/more-details/more-details.component';
 
 
@@ -40,7 +41,8 @@ import { MoreDetailsComponent } from './components/more-details/more-details.com
     HttpClientModule,
     NewBooksModule,
     FormsModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    CartModule,
    
   ],
   providers: [],

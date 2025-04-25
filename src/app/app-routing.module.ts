@@ -6,17 +6,16 @@ import { ContactPageComponent } from './modules/contact-page/contact-page.compon
 import { BooksPageComponent } from './modules/books-page/books-page.component';
 import { NewBooksComponent } from './modules/new-books/new-books.component';
 import { MoreDetailsComponent } from './components/more-details/more-details.component';
+import { CartComponent } from './modules/cart/cart.component';
 
 const routes: Routes = [
  
   { path: 'about ', component: AboutPageComponent },
   { path: 'books' , component: BooksPageComponent },
   { path: 'contactus', component: ContactPageComponent},
-  { path: 'newbooks' , component: NewBooksComponent, 
-    
-  },
+  { path: 'newbooks' , component: NewBooksComponent, },
   { path: 'more-details/:isbn13', component: MoreDetailsComponent },
-  
+  { path: 'cart' , component: CartComponent},
   { path: '', component: LandingPageComponent},
 ];
 

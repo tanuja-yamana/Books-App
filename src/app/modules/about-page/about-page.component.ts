@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BookListService } from 'src/app/services/book-list.service';
 
 @Component({
@@ -6,9 +6,9 @@ import { BookListService } from 'src/app/services/book-list.service';
   templateUrl: './about-page.component.html',
   styleUrls: ['./about-page.component.scss']
 })
-export class AboutPageComponent implements OnInit {
+export class AboutPageComponent implements OnInit, OnDestroy {
 
-  bookList: string[] = [];
+  bookCategoryList: string[] = [];
   newBook: string = '';
   editModeIndex: number | null = null;
   editedBook: string = '';
@@ -20,7 +20,7 @@ export class AboutPageComponent implements OnInit {
   }
 
   loadBooks(): void {
-    this.bookList = this.bookListService.getBooks();
+    this.bookCategoryList= this.bookListService.getBooks();
   }
 
   addBook(): void {
@@ -38,7 +38,7 @@ export class AboutPageComponent implements OnInit {
 
   startEditing(index: number): void {
     this.editModeIndex = index;
-    this.editedBook = this.bookList[index];
+    this.editedBook = this.bookCategoryList[index];
   }
 
   updateBook(): void {
@@ -54,4 +54,12 @@ export class AboutPageComponent implements OnInit {
     this.editModeIndex = null;
     this.editedBook = '';
   }
+
+  ngOnDestroy(): void {
+    this.editModeIndex = null;
+    this.editedBook = '';
+    this.newBook = '';
+    this.bookCategoryList = [];
+  }
+  
 }

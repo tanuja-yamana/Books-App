@@ -16,22 +16,30 @@ export class NewBooksComponent implements OnInit {
   visibleCount: number = 5;  
   cardWidth: number = 180;  
   isAnimating: boolean = false;
+  showScrollTop: boolean = false;
 
   constructor(private newBookCardService: NewBookCardService) {}
 
   ngOnInit(): void {
     this.newBookCardService.getBooks().subscribe((data: any) => {
       this.allBooks = data.books;
-      localStorage.setItem('allBooks', JSON.stringify(this.allBooks)); // ✅ Store allBooks once
-  
+      localStorage.setItem('allBooks', JSON.stringify(this.allBooks));
       this.carouselBooks = this.allBooks;
       this.loadMoreBooks(this.allBooks);
     });
   }
+
   
+  scrollToTop(): void {
+    const scrollContainer = document.querySelector('.scroll-container');
+    if (scrollContainer) {
+      scrollContainer.scrollTo({ top: 0 });
+    }
+  }
 
   onContainerScroll(event: any): void {
     const scrollContainer = event.target;
+    this.showScrollTop = scrollContainer.scrollTop > 300;
     if (scrollContainer.scrollTop + scrollContainer.offsetHeight >= scrollContainer.scrollHeight - 50 && !this.isLoading) {
       this.isLoading = true;
       setTimeout(() => {
@@ -41,7 +49,7 @@ export class NewBooksComponent implements OnInit {
       }, 500);
     }
   }
-
+  
   next(): void {
     if (this.currentIndex + this.visibleCount < this.carouselBooks.length) {
       this.currentIndex++;
@@ -58,7 +66,6 @@ export class NewBooksComponent implements OnInit {
 
   getCardClass(index: number): string {
     const relativeIndex = index - this.currentIndex;
-  
     switch (relativeIndex) {
       case 0:
       case 4:
@@ -73,11 +80,10 @@ export class NewBooksComponent implements OnInit {
     }
   }
   
-
   getTransform(): string {
     return `translateX(-${this.currentIndex * this.cardWidth}px)`;
+
   }
-  
 
   triggerAnimation(): void {
     this.isAnimating = true;
@@ -86,7 +92,6 @@ export class NewBooksComponent implements OnInit {
 
   loadMoreBooks(sourceBooks: any[] = this.allBooks): void {
     if (sourceBooks.length === 0) return;
-
     for (let i = 0; i < 20; i++) {
       const randomIndex = Math.floor(Math.random() * sourceBooks.length);
       this.randomBooks.push(sourceBooks[randomIndex]);
@@ -96,5 +101,6 @@ export class NewBooksComponent implements OnInit {
   storeBook(book: any) {
     localStorage.setItem('selectedBook', JSON.stringify(book));
   }
+
   
 }

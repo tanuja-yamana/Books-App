@@ -35,4 +35,10 @@ export class BookCardComponent {
     this.selectedBook = null;  
   }
   
+  ngOnDestroy(): void {
+    this.popoverVisible = false;
+    this.modalVisible = false;
+    this.selectedBook = null;
+  }
+  
 }

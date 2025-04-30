@@ -9,7 +9,6 @@ import { MoreDetailsComponent } from './components/more-details/more-details.com
 import { CartComponent } from './modules/cart/cart.component';
 
 const routes: Routes = [
- 
   { path: 'about ', component: AboutPageComponent },
   { path: 'books' , component: BooksPageComponent },
   { path: 'contactus', component: ContactPageComponent},

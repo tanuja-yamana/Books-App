@@ -1,12 +1,16 @@
 <div class="app-container">
-  <app-navbar (cartClick)="showCart = !showCart"></app-navbar>
+  <app-navbar 
+    (cartClick)="showCart = !showCart"
+  >
+  </app-navbar>
   <div class="content-container">
     <div class="content" [class.blurred]="showCart">
       <router-outlet></router-outlet>
     </div>
-    <div *ngIf="showCart" class="cart-sidebar" (click)="$event.stopPropagation()">
-      <app-cart (closeCartEvent)="showCart = false"></app-cart>
-    </div>
-    <div *ngIf="showCart" class="backdrop" (click)="showCart = false"></div>
+    <ng-container *ngIf="showCart">
+      <div class="cart-sidebar" (click)="$event.stopPropagation()">
+        <app-cart (closeCartEvent)="showCart = false"></app-cart>
+      </div>
+    </ng-container>
   </div>
 </div>

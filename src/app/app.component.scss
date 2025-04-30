@@ -1,35 +1,36 @@
-
+:host {
+  
 
 html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
+
 
 
 .app-wrapper {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .content {
-  
-    overflow-y: auto;
-    box-sizing: border-box;
-    margin-top: 3rem;
-    height: calc(100vh - 3rem);
+
+  overflow-y: auto;
+  box-sizing: border-box;
+  margin-top: 3rem;
+  height: calc(100vh - 3rem);
+}
+
+
+
+.app-container.cart-open {
+  overflow: hidden; 
   }
-  
-  
-  
-  .app-container.cart-open {
-    overflow: hidden; 
-    }
-  
-  
-  
-  .content.blurred {
-    filter: blur(5px);  
-  }
-  
+
+.content.blurred {
+  filter: blur(5px);  
+}
+
+}

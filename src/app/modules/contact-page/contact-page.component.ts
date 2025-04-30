@@ -10,7 +10,7 @@ export class ContactPageComponent implements OnInit {
 
   constructor(private contactPageService: ContactPageService) { }
   ngOnInit(): void {
-    
+
   }
   username: string = '';
   email: string = '';
@@ -18,17 +18,16 @@ export class ContactPageComponent implements OnInit {
   message: string = '';
 
   storeData() {
-
     if (!this.username || !this.email || !this.gender || !this.message) {
       alert('Please fill out all fields.');
-      return; 
+      return;
     }
     const formData = {
       username: this.username,
       email: this.email,
       gender: this.gender,
       message: this.message,
-      timestamp: new Date().toISOString() 
+      timestamp: new Date().toISOString()
     };
     this.contactPageService.saveData(formData);
     this.username = '';

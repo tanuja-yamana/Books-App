@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BookListService } from 'src/app/services/book-list.service';
 
@@ -7,7 +7,7 @@ import { BookListService } from 'src/app/services/book-list.service';
   templateUrl: './book-page-filters.component.html',
   styleUrls: ['./book-page-filters.component.scss']
 })
-export class BookPageFiltersComponent {
+export class BookPageFiltersComponent implements OnInit, OnDestroy  {
   @Output() sortByPrice = new EventEmitter<boolean>();
   @Output() bookSelected = new EventEmitter<string>();
   @Output() searchKeyword = new EventEmitter<string>();
@@ -15,13 +15,13 @@ export class BookPageFiltersComponent {
   selectedBook: string = '';
   sortAscending = false;
   searchInput: string = '';
+  bookCategoryList: string[] = [];
 
-  bookList: string[] = [
-  ];
+
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private bookListService: BookListService) {}
 ngOnInit(): void{
-  this.bookList = this.bookListService.getBooks();
+  this.bookCategoryList= this.bookListService.getBooks();
 }
   toggleSort(): void {
     this.sortAscending = !this.sortAscending;
@@ -32,7 +32,6 @@ ngOnInit(): void{
     this.selectedBook = (event.target as HTMLSelectElement).value;
     this.searchInput = '';
     this.bookSelected.emit(this.selectedBook);
-
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
       queryParams: {
@@ -46,7 +45,6 @@ ngOnInit(): void{
   onSearchClick(): void {
     this.searchKeyword.emit(this.searchInput);
     this.selectedBook = '';
-
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
       queryParams: {
@@ -56,4 +54,12 @@ ngOnInit(): void{
       queryParamsHandling: 'merge',
     });
   }
+  
+  ngOnDestroy(): void {
+    this.selectedBook = '';
+    this.searchInput = '';
+    this.bookCategoryList = [];
+    this.sortAscending = false;
+  }
+  
 }

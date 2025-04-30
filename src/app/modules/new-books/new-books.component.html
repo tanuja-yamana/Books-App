@@ -1,22 +1,57 @@
 <div class="scroll-container" (scroll)="onContainerScroll($event)">
+  <div class="scroll-btn">
+    <ng-container *ngIf="showScrollTop">
+      <button 
+        class="scroll-top-btn" 
+        (click)="scrollToTop()"
+      >
+        ↑ Scroll to Top
+      </button>
+    </ng-container>
+  </div>
   <div class="d-flex justify-content-center align-items-center mt-4">
-    <button class="btn btn-outline-secondary me-2" (click)="prev()" [disabled]="currentIndex === 0">&#8592;</button>
+    <button class="btn btn-outline-secondary me-2" 
+      (click)="prev()" 
+      [disabled]="currentIndex === 0"
+    >
+      &#8592;
+    </button>
     <div class="carousel-viewport overflow-hidden">
-      <div class="carousel-track" [style.transform]="getTransform()" [class.animate]="isAnimating">
-        <div class="carousel-card" *ngFor="let book of carouselBooks; let i = index" [ngClass]="getCardClass(i)">
-          <div class="card text-center">
-            <p class="ribbon">New</p>
-            <img [src]="book.image" class="card-img-top" [alt]="book.title" />
-            <h5 class="card-title">{{ book.title }}</h5>
-            <p class="card-text">{{ book.subtitle }}</p>
-            <p class="card-text"><strong>{{ book.price }}</strong></p>
-            <a [routerLink]="['/more-details', book.isbn13]" target="_blank">More Details</a>
+      <div 
+        class="carousel-track" 
+        [style.transform]="getTransform()" 
+        [class.animate]="isAnimating"
+      >
+        <ng-container  *ngFor="let book of carouselBooks; let i = index">
+          <div class="carousel-card" [ngClass]="getCardClass(i)">
+            <div class="card text-center">
+              <p class="ribbon">New</p>
+              <img 
+                [src]="book.image" 
+                class="card-img-top" 
+                [alt]="book.title" 
+              />
+              <h5 class="card-title">{{ book.title }}</h5>
+              <p class="card-text">{{ book.subtitle }}</p>
+              <p class="card-text"><strong>{{ book.price }}</strong></p>
+              <a 
+                [routerLink]="['/more-details', book.isbn13]" 
+                target="_blank"
+              >
+                More Details
+              </a>
+            </div>
           </div>
-        </div>
+        </ng-container>
+
       </div>
     </div>
-    <button class="btn btn-outline-secondary ms-2" (click)="next()"
-      [disabled]="currentIndex + visibleCount >= allBooks.length">&#8594;</button>
+    <button class="btn btn-outline-secondary ms-2" 
+      (click)="next()"
+      [disabled]="currentIndex + visibleCount >= allBooks.length"
+    >
+      &#8594;
+    </button>
   </div>
 
   <div class="cards-container mt-5">
@@ -27,9 +62,16 @@
         <h3>{{ book.title }}</h3>
         <p>{{ book.subtitle }}</p>
         <p><strong>{{ book.price }}</strong></p>
-        <a [routerLink]="['/more-details', book.isbn13]" target="_blank">More Details</a>
+        <a 
+          [routerLink]="['/more-details', book.isbn13]" 
+          target="_blank"
+        >
+          More Details
+        </a>
       </div>
     </ng-container>
+    
+
   </div>
 
   <div class="loading-spinner" *ngIf="isLoading">

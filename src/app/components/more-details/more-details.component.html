@@ -1,17 +1,27 @@
 <p class="title">{{ book.title }}</p>
-
 <div *ngIf="book; else notFound" class="card ">
   <div class="card-image">
     <div class="image-container">
-      <img [src]="book.image" class="card-img-top" [alt]="book.title" />
+      <img [src]="book.image" 
+        class="card-img-top" 
+        [alt]="book.title" 
+      />
     </div>
+    <app-cart-quantity 
+      [bookId]="book.isbn13"
+    >
+    </app-cart-quantity>
     <div class="button-container">
-      <button class="btn-buy">BUY</button>
+      <button class="btn-buy" 
+        (click)="onBuyClick()" 
+        [disabled]="buyButtonDisabled"
+      >
+      BUY
+      </button>
       <br>
       <button class="btn-preview">PREVIEW</button>
     </div>
   </div>
-
   <div class="card-body">
     <table class="table table-striped">
       <tr>
@@ -48,9 +58,6 @@
       </tr>
     </table>
   </div>
-
-  <!-- Optional hidden iframe -->
-  <!-- <iframe #chapterIframe src="https://itbook.store/files/9781617294136/chapter2.pdf" style="display: none;"></iframe> -->
 </div>
 
 <ng-template #notFound>

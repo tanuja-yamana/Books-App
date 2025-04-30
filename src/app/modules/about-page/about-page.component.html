@@ -1,28 +1,47 @@
 <div class="content">
-    <h2>This website contains a list of available Books</h2>
-    <h3>The list of books available are:</h3>
-    <div class="addBook">
-      <input type="text" [(ngModel)]="newBook" placeholder="Add a new book" />
-      <button (click)="addBook()"><i class="bi bi-plus"></i></button>
-    </div>
-  
-    <div class="container">
-      <ol class="list-items">
-        <li *ngFor="let book of bookList; index as i">
+  <h2>This website contains a list of available Books</h2>
+  <h3>The list of available category of books are here and you can add a new book category</h3>
+  <div class="addBook">
+    <input type="text" 
+      [(ngModel)]="newBook" 
+      placeholder="Add a new book" 
+    />
+    <button (click)="addBook()">
+      <i class="bi bi-plus"></i>
+    </button>
+  </div>
+  <div class="container">
+    <ol class="list-items">
+      <ng-container *ngFor="let book of bookCategoryList; index as i">
+        <li>
           <div class="book-item">
-            <span *ngIf="editModeIndex !== i">{{ book }}</span>
-            <div *ngIf="editModeIndex === i" class="edit-section">
-              <input type="text" [(ngModel)]="editedBook" />
-              <button (click)="updateBook()"><i class="bi bi-check-lg"></i></button>
-              <button (click)="cancelEdit()"><i class="bi bi-trash3"></i></button>
-            </div>
-            <div class="action-buttons" *ngIf="editModeIndex !== i">
-              <button (click)="startEditing(i)"><i class="bi bi-pencil"></i></button>
-              <button (click)="deleteBook(i)"><i class="bi bi-trash3"></i></button>
-            </div>
+            <ng-container *ngIf="editModeIndex !== i">
+              <span>{{ book }}</span>
+            </ng-container>
+            <ng-container *ngIf="editModeIndex === i">
+              <div class="edit-section">
+                <input type="text" [(ngModel)]="editedBook" />
+                <button (click)="updateBook()">
+                  <i class="bi bi-check-lg"></i>
+                </button>
+                <button (click)="cancelEdit()">
+                  <i class="bi bi-trash3"></i>
+                </button>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="editModeIndex !== i">
+              <div class="action-buttons">
+              <button (click)="startEditing(i)">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button (click)="deleteBook(i)">
+                <i class="bi bi-trash3"></i>
+              </button>
+              </div>
+            </ng-container>
           </div>
         </li>
-      </ol>
-    </div>
+      </ng-container>
+    </ol>
   </div>
-  
+</div>

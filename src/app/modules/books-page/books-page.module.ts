@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { AboutPageModule } from '../about-page/about-page.module';
 import { AboutPageComponent } from '../about-page/about-page.component';
 import { MoreDetailsComponent } from 'src/app/components/more-details/more-details.component';
+import { CartModule } from '../cart/cart.module';
 
 
 @NgModule({
@@ -16,18 +17,20 @@ import { MoreDetailsComponent } from 'src/app/components/more-details/more-detai
     BooksPageComponent,
     BookCardComponent,
     BookPageFiltersComponent,
-    MoreDetailsComponent
+    MoreDetailsComponent,
   ],
   imports: [
     CommonModule,
     BooksPageRoutingModule,
     FormsModule,
-    AboutPageModule
+    AboutPageModule,
+    CartModule
   ],
   exports: [
     BooksPageComponent,
     BookPageFiltersComponent,
-    AboutPageComponent
+    AboutPageComponent,
+    MoreDetailsComponent
   ]
 })
 export class BooksPageModule { }

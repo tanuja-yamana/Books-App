@@ -10,7 +10,7 @@
         width: 100%;
         height: 100%;
         object-fit: fill;
-        margin-top: 0.2rem !important;
+        margin-top: 0.5rem !important;
       }
     }
 
@@ -26,13 +26,13 @@
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     }
 
-    @media screen and (min-width: 2560px) {
-      
+    @media (min-width: 2560px) {
       .landing-page-title {
         font-size: 4rem;
         line-height: 4rem;
-        top: 25%; // adjust if needed
+        top: 25%;
       }
+
       .landingPageImage {
         margin-top: 3rem;
         height: 100%;

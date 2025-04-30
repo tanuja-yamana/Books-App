@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class BookListService {
-  private bookList: string[] = [
+  private bookCategoryList: string[] = [
     'HTML', 'CSS', 'JavaScript', 'NodeJS', 'Python',
     'MongoDB', 'Node', 'Databases', 'JSON',
     'AWS', 'Flask', 'Angular', 'Express'
@@ -13,23 +13,22 @@ export class BookListService {
   constructor() { }
 
   getBooks(): string[] {
-    return [...this.bookList]; // return a copy to avoid external mutation
+    return [...this.bookCategoryList]; 
   }
 
   addBook(book: string): void {
-    // this.bookList.push(book);
-    this.bookList.unshift(book);
+    this.bookCategoryList.unshift(book);
   }
 
   updateBook(index: number, updatedBook: string): void {
-    if (index >= 0 && index < this.bookList.length) {
-      this.bookList[index] = updatedBook;
+    if (index >= 0 && index < this.bookCategoryList.length) {
+      this.bookCategoryList[index] = updatedBook;
     }
   }
 
   deleteBook(index: number): void {
-    if (index >= 0 && index < this.bookList.length) {
-      this.bookList.splice(index, 1);
+    if (index >= 0 && index < this.bookCategoryList.length) {
+      this.bookCategoryList.splice(index, 1);
     }
   }
 }

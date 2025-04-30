@@ -1,56 +1,62 @@
-
 <div class="book-page-wrapper">
   <div class="book-page-filters">
-    <app-book-page-filters 
-      (sortByPrice)="onSortByPrice($event)" 
+    <app-book-page-filters
+      (sortByPrice)="onSortByPrice($event)"
       (bookSelected)="onBookFilterChange($event)"
       (searchKeyword)="onSearchInput($event)">
     </app-book-page-filters>
   </div>
 
   <div class="cards-container-wrapper">
-    <div *ngIf="loading" class="text-center my-4">
-      <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Loading...</span>
+    <ng-container *ngIf="loading">
+      <div class="text-center my-4">
+        <div class="spinner-border text-primary" role="status"></div>
+        <div>Loading books, please wait...</div>
       </div>
-      <div>Loading books, please wait...</div>
-    </div>
+    </ng-container>
 
     <ng-container *ngIf="!loading && !noBooksFound; else noBooks">
       <div class="cards-container">
-        <app-book-card
-  *ngFor="let book of books"
-  [book]="book"
-  (moreDetails)="openModal($event)"
-></app-book-card>
-
+        <ng-container *ngFor="let book of books">
+          <app-book-card 
+            [book]="book"
+            (moreDetails)="openModal($event)">
+          </app-book-card>
+        </ng-container>
       </div>
     </ng-container>
 
     <ng-template #noBooks>
-      <div *ngIf="!loading && noBooksFound" class="text-center mt-4 text-muted">
-        No books found.
-      </div>
+      <ng-container *ngIf="!loading && noBooksFound">
+        <div class="text-center mt-4 text-muted">
+          No books found.
+        </div>
+      </ng-container>
     </ng-template>
-    
   </div>
 
-  <div *ngIf="!loading && !noBooksFound" class="pagination-container text-center">
-    <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1" >
-      &lt;
-    </button>
-
-    <button *ngFor="let page of getVisiblePages()" 
-            (click)="onPageChange(page)" 
-            [class.active]="page === currentPage" 
-            >
-      {{ page }}
-    </button>
-
-    <button (click)="onPageChange(currentPage + 1)" 
-            [disabled]="currentPage === getTotalPages()" 
-            >
-      &gt;
-    </button>
-  </div>
+  <ng-container *ngIf="!loading && !noBooksFound">
+    <div class="pagination-container text-center">
+      <button 
+        (click)="onPageChange(currentPage - 1)" 
+        [disabled]="currentPage === 1"
+      >
+        &lt;
+      </button>
+      <ng-container *ngFor="let page of getVisiblePages()">
+        <button 
+          (click)="onPageChange(page)" 
+          [class.active]="page === currentPage"
+        >
+          {{ page }}
+        </button>
+      </ng-container>
+      <button 
+        (click)="onPageChange(currentPage + 1)" 
+        [disabled]="currentPage === getTotalPages()"
+      >
+        &gt;
+      </button>
+    </div>
+  </ng-container>
 </div>

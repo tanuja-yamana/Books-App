@@ -1,0 +1,9 @@
+<div class="cartQuantity">
+  <button (click)="decrement()">-</button>
+  <input 
+    type="number" 
+    [value]="cartQuantityService.getQuantity(bookId)" 
+    (input)="onInputChange($event)"
+  >
+  <button (click)="increment()">+</button>
+</div>

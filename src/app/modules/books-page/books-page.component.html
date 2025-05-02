@@ -9,7 +9,7 @@
 
   <div class="cards-container-wrapper">
     <ng-container *ngIf="loading">
-      <div class="text-center my-4">
+      <div class="text-center my-4 loading-message">
         <div class="spinner-border text-primary" role="status"></div>
         <div>Loading books, please wait...</div>
       </div>
@@ -28,7 +28,7 @@
 
     <ng-template #noBooks>
       <ng-container *ngIf="!loading && noBooksFound">
-        <div class="text-center mt-4 text-muted">
+        <div class="text-center mt-4 text-muted no-books-message">
           No books found.
         </div>
       </ng-container>

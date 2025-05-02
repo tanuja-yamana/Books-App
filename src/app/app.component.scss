@@ -1,5 +1,8 @@
 :host {
-  
+  display: block;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  // min-height: 100vh;
 
 html, body {
   margin: 0;

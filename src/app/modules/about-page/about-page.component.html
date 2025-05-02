@@ -12,11 +12,11 @@
   </div>
   <div class="container">
     <ol class="list-items">
-      <ng-container *ngFor="let book of bookCategoryList; index as i">
+      <ng-container *ngFor="let bookCategory of bookCategoryList; index as i">
         <li>
           <div class="book-item">
             <ng-container *ngIf="editModeIndex !== i">
-              <span>{{ book }}</span>
+              <span>{{ bookCategory }}</span>
             </ng-container>
             <ng-container *ngIf="editModeIndex === i">
               <div class="edit-section">

@@ -8,11 +8,8 @@
       <ul>
         <ng-container *ngFor="let link of navLinks">
           <li>
-            <a 
-              [routerLink]="link.path" 
-              routerLinkActive="active-link"
-            >
-            {{ link.label }}
+            <a [routerLink]="link.path" routerLinkActive="active-link">
+              {{ link.label }}
             </a>
           </li>
         </ng-container>
@@ -20,7 +17,13 @@
           <a class="nav-link-cart" (click)="cartClick.emit()">
             <i class="bi bi-cart4"></i>
             <ng-container *ngIf="getTotalCartQuantity() > 0">
-              <span class="cart-quantity-badge">{{ getTotalCartQuantity() }}</span>
+              <span 
+                class="cart-quantity-badge" 
+                [attr.title]="getTotalCartQuantity()"
+              >
+                  {{ getTotalCartQuantity() > 99 ? (getTotalCartQuantity() + '').slice(0,2) + '...' :
+                  getTotalCartQuantity() }}
+              </span>
             </ng-container>
           </a>
         </li>

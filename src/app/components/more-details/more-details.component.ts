@@ -42,6 +42,7 @@ export class MoreDetailsComponent implements OnInit, OnDestroy {
     window.open('https://itbook.store/files/9781617294136/chapter5.pdf', '_blank');
   }
 
+  // Adding specific book to cart
   onBuyClick() {
     const bookDetails = {
       bookImage: this.book?.image,

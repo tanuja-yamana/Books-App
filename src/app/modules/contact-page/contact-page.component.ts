@@ -38,4 +38,6 @@ export class ContactPageComponent implements OnInit {
   getStoredData() {
     return this.contactPageService.getData();
   }
+
+  
 }

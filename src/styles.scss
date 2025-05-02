@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+body.light-theme {
+    --bg-color: #ffffff;
+    --text-color: #333;
+  }
+  
+  body.dark-theme {
+    --bg-color: #333;
+    // --text-color: #ffffff;
+  }
+  
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  

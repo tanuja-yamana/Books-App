@@ -1,4 +1,79 @@
 :host {
+  :host-context(.dark-theme) {
+    .filters-page {
+      // background-color: gray;
+      border-bottom: 1px solid #555;
+
+      .select-dropdown {
+        background-color: #444;
+        border: 1px solid #555;
+        // border-radius: 6px;
+
+        select {
+          background-color: #444;
+          color: #ece0e0ec;
+        }
+
+        i {
+          color: #ece0e0ec;
+        }
+      }
+
+      button {
+        background-color: #444;
+        color: #ece0e0ec;
+        border: 1px solid #555;
+
+        &:hover {
+          background-color: #555;
+        }
+      }
+
+      .right-side-options {
+        
+        .form-control,
+        input {
+          background-color: #555;
+          color: #ece0e0ec;
+        }
+
+        .searchButton {
+          background-color: #444;
+
+          input {
+            background-color: #444;
+            color: #ece0e0ec;
+
+            &::placeholder {
+              color: #ece0e0ec;
+            }
+          }
+
+          button {
+            background-color: #444;
+            color: #ece0e0ec;
+
+            &:hover {
+              background-color: #555;
+            }
+          }
+
+          i {
+            color: #ece0e0ec;
+          }
+        }
+
+        span {
+          color: #ece0e0ec;
+        }
+
+        
+      }
+    }
+  }
+
+
+
   .filters-page {
     display: flex;
     justify-content: space-between;
@@ -51,6 +126,8 @@
       gap: 1rem;
       margin-right: 1.8rem;
 
+      
+
       .form-control {
         padding: 5px;
         border: none;
@@ -93,7 +170,7 @@
 
   @media screen and (min-width: 1024px) {
     .filters-page {
-      padding: 0.5rem 0rem 0.5rem 0rem;
+      padding: 0.7rem 0rem 0.5rem 0rem;
     }
     .select-dropdown {
       width: 100%;

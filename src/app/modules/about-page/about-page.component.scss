@@ -1,16 +1,79 @@
 :host {
+  :host-context(.dark-theme) {
+    .content {
+      background-color: #3d3b3b;
+      color: #f1f1f155;
+    }
+
+    .addBook {
+      background-color: #333;
+
+      input[type='text'] {
+        background-color: #333;
+        color: #ece0e0b5;
+      }
+
+      button i {
+        color: #ece0e0b5;
+      }
+
+      button:hover i {
+        color: #f8f5f5f1;
+      }
+    }
+
+    h2 {
+      color: #c23a3a;
+    }
+
+    h3 {
+      color: #efccccd8;
+    }
+
+    .list-items li {
+      background-color: #333;
+
+      .book-item {
+        color: #ece0e0b5;
+
+        .edit-section {
+          input[type='text'] {
+            background-color: #333;
+            color: #ece0e0b5;
+          }
+
+          button i {
+            color: #ece0e0b5;
+          }
+
+          button:hover i {
+            color: #f8f5f5f1;
+          }
+        }
+
+        .action-buttons button i {
+          color: #ece0e0b5;
+        }
+
+        .action-buttons button:hover i {
+          color: #f8f5f5f1;
+        }
+      }
+    }
+  }
+
   .container {
     display: grid;
     gap: 1rem;
     margin-top: 1rem;
     max-width: 100%;
     max-height: 80vh;
-    overflow-y: auto; 
-    -ms-overflow-style: none;  
-    scrollbar-width: none;     
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 
     &::-webkit-scrollbar {
-      display: none;           
+      display: none;
     }
   }
 
@@ -22,8 +85,7 @@
     max-height: 100vh;
     overflow-y: auto;
     height: 91vh;
-    padding-top: 0 ;
-    // padding-bottom: 1rem !important;
+    padding-top: 0;
 
     &::-webkit-scrollbar {
       display: none;
@@ -126,7 +188,6 @@
 
           input[type='text'] {
             flex: 1;
-            padding: 0.4rem 0.625rem;
             font-size: 1rem;
           }
         }
@@ -159,64 +220,63 @@
     }
   }
 
-@media screen and (min-width: 2560px) {
-  .container {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin-top: 2rem;
-    padding: 0 2rem;
-    overflow-x: hidden;
-  }
+  @media screen and (min-width: 2560px) {
+    .container {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+      padding: 0 2rem;
+      overflow-x: hidden;
+    }
 
-  .content {
-    margin-top: 3rem;
-    overflow-x: hidden;
-  }
+    .content {
+      margin-top: 3rem;
+      overflow-x: hidden;
+    }
 
-  .addBook {
-    max-width: 50rem;
-    width: 25rem;
-    padding: 1rem 1.2rem;
-    min-height: 80px;
+    .addBook {
+      max-width: 50rem;
+      width: 25rem;
+      padding: 1rem 1.2rem;
+      min-height: 80px;
 
-    input[type='text'] {
-      font-size: 1.8rem;
-
-      &::placeholder {
+      input[type='text'] {
         font-size: 1.8rem;
+
+        &::placeholder {
+          font-size: 1.8rem;
+        }
       }
+
+      button {
+        font-size: 2rem;
+      }
+    }
+
+    .list-items {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      justify-content: center;
+      margin: 0 2rem;
+    }
+
+    li {
+      width: 35rem;
+      font-size: 2rem;
+      min-height: 100px;
+    }
+
+    h2 {
+      margin-top: 1rem;
+      font-size: 3.5rem;
+    }
+
+    h3 {
+      font-size: 3rem;
     }
 
     button {
       font-size: 2rem;
     }
   }
-
-  .list-items {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    justify-content: center;
-    margin: 0 2rem;
-  }
-
-  li {
-    width: 35rem;
-    font-size: 2rem;
-    min-height: 100px;
-  }
-
-  h2 {
-    margin-top: 1rem;
-    font-size: 3.5rem;
-  }
-
-  h3 {
-    font-size: 3rem;
-  }
-
-  button {
-    font-size: 2rem;
-  }
-}
-
 }

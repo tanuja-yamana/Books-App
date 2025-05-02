@@ -1,4 +1,53 @@
 :host {
+  :host-context(.dark-theme) {
+
+    .book-page-filters {
+      background-color: #333;
+    }
+
+    .pagination-container {
+      background-color: #333;
+      border-top: 1px solid #555;
+
+
+      button,
+      .btn,
+      .arrow-btn-left,
+      .arrow-btn-right {
+        background-color: #333;
+        color: #ece0e0b5;
+        border: 1px solid #555 !important;
+
+        &:hover,
+        &:focus {
+          background: #555 !important;
+          color: #ece0e0ec !important;
+        }
+
+        &.active {
+          background: #5cd460;
+          color: black;
+        }
+
+        &:disabled {
+          background-color: #333;
+          &:hover,
+          &:focus {
+            background: #333 !important;
+            color: #ece0e0b5;
+          }
+        }
+      }
+    }
+    .no-books-message {
+      color: #ece0e0b5 !important;
+    }
+    .loading-message {
+      color: #ece0e0b5;
+    }
+  }
+
+  
   .book-page-wrapper {
     display: flex;
     flex-direction: column;

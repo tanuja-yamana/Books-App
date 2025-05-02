@@ -1,4 +1,14 @@
-.cartQuantity {
+:host {
+  :host-context(.dark-theme) {
+    .cartQuantity button {
+    background-color:#ece0e0b5 ;
+    }
+    .cartQuantity input {
+background-color: #ece0e0b5;
+    }
+  }
+  
+  .cartQuantity {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,3 +40,4 @@
     margin: 0;
   }
   
+}

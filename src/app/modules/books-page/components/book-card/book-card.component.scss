@@ -1,5 +1,20 @@
 :host {
-  
+  :host-context(.dark-theme) {
+    .modal-wrapper .modal-content {
+      background-color: #333  !important;
+    }
+    .modal-wrapper {
+      background-color: #333 !important;
+    }
+    .modal-close-btn {
+      background-color: rgb(65, 127, 165) !important;
+
+      &:hover {
+        background-color: rgb(36, 103, 145) !important;
+      }
+    }
+  }
+
   .content-container {
     display: flex;
     flex-wrap: wrap;
@@ -111,6 +126,7 @@
     align-items: center;
     z-index: 999;
     box-sizing: border-box;
+    border-radius: 0.5rem;
     margin: auto;
     inset: 0;
 

@@ -1,4 +1,37 @@
 :host {
+  :host-context(.dark-theme) {
+    .card {
+      background-color: #80b682;
+
+      &:hover {
+        transform: scale(1.05);
+        background-color: #80b682 !important;
+      }
+    }
+
+    h3 {
+      color: rgba(12, 11, 11, 0.811) !important;
+    }
+
+    a {
+      color: rgba(247, 28, 28, 0.811) !important;
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+        color: rgba(190, 7, 7, 0.811) !important;
+      }
+    }
+
+    p {
+      color: #130404b5 !important;
+    }
+
+    .ribbon {
+      background-color: rgb(222, 54, 82) !important;
+    }
+  }
+
   .scroll-container {
     height: 91vh;
     overflow-y: auto;
@@ -10,16 +43,20 @@
   }
 
   .carousel-viewport {
-    width: 50%;
-    padding: 0.625rem 0;
+    width: 100%;
+    padding: 1rem 0;
     overflow: hidden;
+  }
+
+  .carousel-track-wrapper {
+    overflow: hidden;
+    width: 53%;
   }
 
   .carousel-track {
     display: flex;
-    width: 40%;
-    margin: 0;
-    padding: 0;
+    justify-content: initial;
+    padding-left: 0.8rem !important;
     transition: transform 0.5s ease;
   }
 
@@ -84,7 +121,7 @@
     width: 15.625rem;
     height: 18.75rem;
     margin: 0.3125rem;
-    padding: 0.625rem;
+    padding: 1rem;
     border: 1px solid #ccc;
     border-radius: 0.5rem;
     background-color: rgb(183, 164, 201);
@@ -122,6 +159,10 @@
       transform: scale(1.05);
       background-color: rgb(153, 128, 174);
     }
+    .more-details-tag:hover {
+      text-decoration: underline;
+    }
+
   }
 
   .ribbon {
@@ -165,93 +206,30 @@
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
     z-index: 1000;
     transition: opacity 0.3s ease;
+
+    &:hover {
+      background-color: rgb(112, 86, 240);
+    }
   }
-  
-  .scroll-top-btn:hover {
-    background-color: rgb(112, 86, 240);
-  }
-  
 }
+
+/* Responsive Styles */
 
 @media (min-width: 1024px) and (max-width: 1439px) {
   :host {
-    .cards-container {
-      gap: 0.5rem;
+    .carousel-viewport {
+      width: 100%;
+      padding: 1rem 0;
+      overflow: hidden;
     }
 
-    .carousel-viewport {
-      width: 60%;
+    .carousel-track-wrapper {
+      overflow: hidden;
+      width: 50%;
     }
 
     .carousel-track {
-      width: 80%;
-    }
-
-    .card {
-      width: 13.8rem;
-      height: 15rem;
-
-      img {
-        width: 5rem;
-      }
-
-      h3 {
-        font-size: 0.9rem;
-        margin-bottom: 0;
-      }
-
-      p {
-        font-size: 0.7rem;
-        margin-bottom: 0;
-      }
-
-      a {
-        font-size: 0.7rem;
-        margin-bottom: 0;
-      }
-    }
-
-    .carousel-card {
-      width: 8.5rem;
-      height: 20rem;
-
-      &.edge-card {
-        transform: scale(0.65);
-      }
-
-      &.near-middle {
-        transform: scale(0.75);
-      }
-
-      &.middle-card {
-        transform: scale(0.85);
-      }
-
-      img {
-        width: 5.5rem;
-      }
-
-      h5 {
-        font-size: 1rem;
-      }
-
-      p {
-        font-size: 0.85rem;
-      }
-
-      a {
-        font-size: 0.8rem;
-      }
-    }
-
-    .ribbon {
-      width: 10.5rem;
-      font-size: 0.85rem;
-      left: -3.8rem;
-    }
-
-    .loading-spinner {
-      font-size: 1.1rem;
+      padding-left: 0rem !important;
     }
   }
 }
@@ -260,14 +238,21 @@
   :host {
     .cards-container {
       gap: 3.8rem;
+      justify-content: center;
     }
 
     .carousel-viewport {
       width: 60%;
+      margin: 0 auto;
+    }
+
+    .carousel-track-wrapper {
+      width: 80% !important;
+      padding-right: 2rem !important;
     }
 
     .carousel-track {
-      width: 80%;
+      padding-left: 0 !important;
     }
 
     .card {
@@ -282,10 +267,7 @@
         font-size: 1rem;
       }
 
-      p {
-        font-size: 0.8rem;
-      }
-
+      p,
       a {
         font-size: 0.8rem;
       }
@@ -315,12 +297,9 @@
         font-size: 1.1rem;
       }
 
-      p {
-        font-size: 0.95rem;
-      }
-
+      p,
       a {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
       }
     }
 
@@ -339,19 +318,29 @@
 @media (min-width: 2560px) {
   :host {
     .cards-container {
-      gap: 9.8rem;
+      gap: 7.8rem;
+      justify-content: center;
     }
 
     .carousel-viewport {
-      width: 50%;
-      padding: 4.625rem 0;
-      overflow: hidden;
-      margin: 0 2rem;
+      width: 55%;
+      padding: 3.625rem 0 !important;
+      margin: 0 auto;
+    }
+
+    .carousel-track {
+      padding: 6rem;
+      padding-right: 0 !important;
+      margin-bottom: 0.5rem !important;
+    }
+
+    .carousel-track-wrapper {
+      width: 100%;
     }
 
     .card {
-      width: 30rem;
-      height: 40rem;
+      width: 32rem;
+      height: 40rem !important;
       gap: 1rem;
 
       img {
@@ -362,10 +351,7 @@
         font-size: 1.8rem;
       }
 
-      p {
-        font-size: 1.5rem;
-      }
-
+      p,
       a {
         font-size: 1.5rem;
       }
@@ -374,6 +360,7 @@
     .carousel-card {
       width: 12rem;
       height: 34rem;
+      gap: 2rem !important;
 
       &.edge-card {
         transform: scale(0.8);
@@ -395,10 +382,7 @@
         font-size: 1.8rem;
       }
 
-      p {
-        font-size: 1.3rem;
-      }
-
+      p,
       a {
         font-size: 1.3rem;
       }
@@ -407,18 +391,13 @@
     .ribbon {
       width: 16rem;
       font-size: 1.3rem;
-      text-align: center;
       top: 1rem;
       left: -4.5rem;
       transform: rotate(-45deg);
     }
 
     .loading-spinner {
-      font-size: 2.5rem;
-    }
-
-    button {
-      font-size: 2.5rem;
+      font-size: 2rem;
     }
   }
 }

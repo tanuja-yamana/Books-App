@@ -17,6 +17,7 @@ export class NewBooksComponent implements OnInit {
   cardWidth: number = 180;  
   isAnimating: boolean = false;
   showScrollTop: boolean = false;
+  counter: number = 0;
 
   constructor(private newBookCardService: NewBookCardService) {}
 
@@ -24,7 +25,7 @@ export class NewBooksComponent implements OnInit {
     this.newBookCardService.getBooks().subscribe((data: any) => {
       this.allBooks = data.books;
       localStorage.setItem('allBooks', JSON.stringify(this.allBooks));
-      this.carouselBooks = this.allBooks;
+      this.carouselBooks = this.allBooks.slice(0,5);
       this.loadMoreBooks(this.allBooks);
     });
   }
@@ -51,19 +52,19 @@ export class NewBooksComponent implements OnInit {
   }
   
   next(): void {
-    if (this.currentIndex + this.visibleCount < this.carouselBooks.length) {
-      this.currentIndex++;
-      this.triggerAnimation();
+    if (this.counter + this.visibleCount < this.allBooks.length) {
+      this.counter++;
+      this.carouselBooks = this.allBooks.slice(this.counter, this.counter + this.visibleCount);
     }
   }
-
+  
   prev(): void {
-    if (this.currentIndex > 0) {
-      this.currentIndex--;
-      this.triggerAnimation();
+    if (this.counter > 0) {
+      this.counter--;
+      this.carouselBooks = this.allBooks.slice(this.counter, this.counter + this.visibleCount);
     }
   }
-
+  
   getCardClass(index: number): string {
     const relativeIndex = index - this.currentIndex;
     switch (relativeIndex) {
@@ -79,16 +80,6 @@ export class NewBooksComponent implements OnInit {
         return '';
     }
   }
-  
-  getTransform(): string {
-    return `translateX(-${this.currentIndex * this.cardWidth}px)`;
-
-  }
-
-  triggerAnimation(): void {
-    this.isAnimating = true;
-    setTimeout(() => this.isAnimating = false, 500);
-  }
 
   loadMoreBooks(sourceBooks: any[] = this.allBooks): void {
     if (sourceBooks.length === 0) return;
@@ -101,6 +92,5 @@ export class NewBooksComponent implements OnInit {
   storeBook(book: any) {
     localStorage.setItem('selectedBook', JSON.stringify(book));
   }
-
   
 }

@@ -98,7 +98,7 @@
       }
     }
   
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 1024px) and (max-width: 1439px) {
       .custom-navbar {
         height: 3.4rem;
       }
@@ -120,7 +120,7 @@
       }
     }
   
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1440px) and (max-width: 2559px) {
       .custom-navbar {
         height: 4rem;
       }
@@ -132,6 +132,18 @@
       .navbar-links ul li a {
         font-size: 1.5rem !important;
       }
+
+      .navbar-links ul .nav-link-cart i {
+        font-size: 2rem !important; // Increased icon size slightly
+      }
+    
+      .navbar-links ul .nav-link-cart .cart-quantity-badge {
+        width: 30px;
+        height: 25px;
+        font-size: 1rem;
+        top: -10px;
+        right: -8px;
+      }
     }
   
     @media screen and (min-width: 2560px) {
@@ -141,7 +153,7 @@
       }
   
       .navbar-brand span {
-        font-size: 3.2rem;
+        font-size: 3.2rem !important;
       }
   
       .navbar-brand img {
@@ -150,6 +162,22 @@
   
       .navbar-links ul li a {
         font-size: 2.7rem !important;
+      }
+
+      .navbar-links ul {
+        gap: 2rem !important;
+      }
+
+      .navbar-links ul .nav-link-cart i {
+        font-size: 3rem; // Increased cart icon size
+      }
+    
+      .navbar-links ul .nav-link-cart .cart-quantity-badge {
+        width: 50px;
+        height: 40px;
+        font-size: 1.5rem;
+        top: -10px;
+        right: -10px;
       }
     }
   }

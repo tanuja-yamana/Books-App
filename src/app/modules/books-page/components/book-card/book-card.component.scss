@@ -13,6 +13,26 @@
         background-color: rgb(36, 103, 145) !important;
       }
     }
+    .card {
+      // background-color: #4caf50;
+      background-color:  #80b682;
+    }
+    h3 {
+      color: rgba(12, 11, 11, 0.811) !important;
+    }
+    a {
+      color:  rgba(247, 28, 28, 0.811)  !important;  
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    a:hover {
+      color: rgba(190, 7, 7, 0.811)!important; 
+    }
+
+    p {
+      color: #130404b5 !important;  
+    }
   }
 
   .content-container {
@@ -153,7 +173,7 @@
 
       .modal-content {
         flex: 1;
-        padding: 0.3rem;
+        // padding: 0.3rem;
         // height: 5%;
         margin-bottom: 0.3rem;
       }
@@ -210,16 +230,31 @@
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1439px) {
-  :host {
+   :host {
     .modal-overlay {
       top: 10%;
-      width: 39rem; 
-      height: 23rem; 
+      width: 35rem; 
+      height: 21rem; 
     }
+
+    .modal-wrapper {
+      width: 35rem; 
+      height: 21rem; 
+      overflow-y: hidden !important;
+      .modal-title {
+        padding-top: 0 !important;
+      }
+    }
+
+    .modal-content {
+      height: 15rem; 
+      overflow-y: auto; 
+    }
+
     .modal-close-btn {
-      font-size: 0.3rem;
-      bottom: 0.2rem;
-      padding: 0.2rem ;
+      // font-size: 0.3rem !important;
+      bottom: 0.2rem !important;
+      padding: 0.2rem !important;
     }
   }
 }
@@ -237,13 +272,20 @@
   @media screen and (min-width: 2560px) {
     :host {
       .modal-overlay {
-        width: 70rem; 
-        height: 42rem; 
+        top: 11%;
+        // width: 70rem; 
+        // height: 42rem; 
+        width: 76rem; 
+        height: 46rem;
+      }
+      .modal-title {
+        font-size: 3rem !important;
       }
       .modal-close-btn {
-        font-size: 0.8rem;
+        font-size: 1rem !important;
         bottom: 2rem;
-        padding: 0.8rem ;
+        padding: 1rem !important ;
       }
+      
     }
   }

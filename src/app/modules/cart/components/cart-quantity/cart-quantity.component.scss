@@ -4,7 +4,7 @@
     background-color:#ece0e0b5 ;
     }
     .cartQuantity input {
-background-color: #ece0e0b5;
+      background-color: #ece0e0b5;
     }
   }
   
@@ -40,4 +40,33 @@ background-color: #ece0e0b5;
     margin: 0;
   }
   
+
+  @media screen and (max-width: 1024px) {
+    .cartQuantity button {
+      width: 1.5rem;
+      height: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .cartQuantity input {
+      width: 2rem;
+      height: 1.5rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  @media screen and (min-width: 2560px) {
+    .cartQuantity button {
+      width: 4.8rem;
+      height: 3.8rem;
+      font-size: 1.8rem;
+    }
+
+    .cartQuantity input {
+      width: 5rem;
+      height: 3.8rem;
+      font-size: 1.6rem;
+    }
+  }
+
 }

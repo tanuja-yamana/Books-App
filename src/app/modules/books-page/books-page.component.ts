@@ -29,6 +29,7 @@ export class BooksPageComponent implements OnInit {
     this.fetchBooks();
   }
 
+  // loading books from API
   fetchBooks(): void {
     this.loading = true;
     this.books = [];

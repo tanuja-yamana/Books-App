@@ -42,7 +42,7 @@ export class MoreDetailsComponent implements OnInit, OnDestroy {
     window.open('https://itbook.store/files/9781617294136/chapter5.pdf', '_blank');
   }
 
-  // Adding specific book to cart
+  // Adding selected specific book to cart
   onBuyClick() {
     const bookDetails = {
       bookImage: this.book?.image,
@@ -57,6 +57,7 @@ export class MoreDetailsComponent implements OnInit, OnDestroy {
     this.book.buyClicked = true;
   }
 
+  // buy button state that is enabled or disabled based on quantity 
   updateBuyButtonState() {
     const quantity = this.cartQuantityService.getQuantity(this.book.isbn13);
     if (quantity === 1) {

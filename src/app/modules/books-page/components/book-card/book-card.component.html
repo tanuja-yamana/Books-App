@@ -12,6 +12,7 @@
   <p>Price: <strong>{{ book.price }}</strong></p>
   <a (click)="openModal()">More Details</a>
   
+  <!-- modal for book-card -->
   <div *ngIf="modalVisible" 
     class="modal-overlay" 
     (click)="closeModal()"

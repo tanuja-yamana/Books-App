@@ -19,6 +19,7 @@ export class AboutPageComponent implements OnInit, OnDestroy {
     this.loadBooks();
   }
 
+  // storing the default category of books
   loadBooks(): void {
     this.bookCategoryList= this.bookListService.getBooks();
   }
